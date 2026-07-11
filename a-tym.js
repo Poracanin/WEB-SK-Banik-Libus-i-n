@@ -330,8 +330,18 @@
     var note = $("scheduleNote");
     var btn = $("scheduleMore");
     var rows = state.upcoming;
+    var fallbackSchedule = false;
 
-    note.textContent = rows.length ? shortCompetition(rows[0].competition) : "Bez dalších zápasů";
+    if (!rows.length) {
+      rows = state.matches
+        .filter(function (m) { return m.dt; })
+        .sort(function (a, b) { return a.dt - b.dt; });
+      fallbackSchedule = rows.length > 0;
+    }
+
+    note.textContent = rows.length
+      ? ((fallbackSchedule ? "Poslední dostupný rozpis · " : "") + shortCompetition(rows[0].competition))
+      : "Bez dalších zápasů";
     if (!rows.length) {
       list.innerHTML = '<div class="empty-state">V aktuálním JSONu není další zápas týmu ' + esc(PAGE.titleShort) + '.</div>';
       btn.hidden = true;
