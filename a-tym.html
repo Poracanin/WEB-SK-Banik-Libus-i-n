@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A tým | SK Baník Libušín</title>
+<link rel="icon" href="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="homepage.css">
+<link rel="stylesheet" href="a-tym.css?v=2">
+</head>
+<body class="team-page" data-team-source="a_tym" data-sheet-team="a" data-team-title="A tým" data-team-short="A tým">
+
+<!-- ============ NAV ============ -->
+<div class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-social">
+      <a href="https://www.facebook.com/people/SK-Ban%C3%ADk-Libu%C5%A1%C3%ADn/61551993864059/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"></path></svg>
+      </a>
+      <a href="https://www.instagram.com/skbaniklibusin/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"></circle></svg>
+      </a>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Domů</a>
+      <a href="klub.html">Klub</a>
+      <a href="a-tym.html" class="active">A-Tým</a>
+      <a href="b-tym.html">B-Tým</a>
+      <a href="dorost.html">Dorost</a>
+      <a href="hymna.html">Hymna</a>
+      <a href="#">Dokumenty</a>
+      <a href="kontakty.html">Kontakty</a>
+    </div>
+    <button type="button" class="nav-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="navModal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ============ MOBILNÍ MENU ============ -->
+<div class="nav-modal" id="navModal" aria-hidden="true">
+  <div class="nav-modal-backdrop" id="navModalBackdrop"></div>
+  <div class="nav-modal-panel" role="dialog" aria-modal="true" aria-label="Hlavní menu">
+    <div class="nav-modal-head">
+      <div class="nav-modal-brand">
+        <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="" class="nav-modal-logo">
+        <span class="nav-modal-title">SK Baník <span class="accent">Libušín</span></span>
+      </div>
+      <button type="button" class="nav-modal-close" id="navModalClose" aria-label="Zavřít menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+
+    <nav class="nav-modal-links">
+      <a href="index.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5"></path><path d="M6 9.5V20h12V9.5"></path></svg></span>
+        <span class="ni-label">Domů</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="klub.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"></path></svg></span>
+        <span class="ni-label">Klub</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="a-tym.html" class="active">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8l3.2 2.3-1.2 3.7h-4L8.8 10.3z"></path></svg></span>
+        <span class="ni-label">A-Tým</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="b-tym.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8l3.2 2.3-1.2 3.7h-4L8.8 10.3z"></path></svg></span>
+        <span class="ni-label">B-Tým</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="dorost.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8l3.2 2.3-1.2 3.7h-4L8.8 10.3z"></path></svg></span>
+        <span class="ni-label">Dorost</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="hymna.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l10-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="16" cy="16" r="3"></circle></svg></span>
+        <span class="ni-label">Hymna</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="#">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6M9 17h4"></path></svg></span>
+        <span class="ni-label">Dokumenty</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="kontakty.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
+        <span class="ni-label">Kontakty</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+    </nav>
+
+    <div class="nav-modal-social">
+      <a href="https://www.instagram.com/skbaniklibusin/" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"></circle></svg>
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.facebook.com/people/SK-Ban%C3%ADk-Libu%C5%A1%C3%ADn/61551993864059/" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"></path></svg>
+        <span>Facebook</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="team-hero">
+  <div class="team-hero-bg"></div>
+  <div class="team-hero-wash"></div>
+  <div class="team-hero-content">
+    <div class="team-hero-copy" data-reveal>
+      <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="" class="team-hero-logo">
+      <span class="team-kicker">Muži A</span>
+      <h1>A tým</h1>
+      <p id="heroCompetition">Načítám soutěž...</p>
+    </div>
+    <div class="team-hero-match" id="heroMatch" data-reveal>
+      <div class="team-loading">Načítám nejbližší zápas...</div>
+    </div>
+  </div>
+  <a href="#rozpis" aria-label="Posunout na rozpis" class="team-scroll">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+  </a>
+</header>
+
+<main>
+  <nav class="team-tabs-bar" aria-label="Sekce A týmu">
+    <div class="team-tabs-inner">
+      <a href="#rozpis" class="active">Rozpis</a>
+      <a href="#tabulka">Tabulka</a>
+      <a href="#vysledky">Výsledky</a>
+      <a href="#soupiska">Soupiska</a>
+    </div>
+  </nav>
+
+  <section class="team-overview" aria-label="Rychlý přehled">
+    <div class="overview-card" data-reveal>
+      <span class="overview-label">Sezona</span>
+      <strong id="overviewSeason">-</strong>
+    </div>
+    <div class="overview-card" data-reveal>
+      <span class="overview-label">Příští zápas</span>
+      <strong id="overviewNext">-</strong>
+    </div>
+    <div class="overview-card" data-reveal>
+      <span class="overview-label">Poslední výsledek</span>
+      <strong id="overviewLast">-</strong>
+    </div>
+    <div class="overview-card" data-reveal>
+      <span class="overview-label">Tabulka</span>
+      <strong id="overviewStanding">-</strong>
+    </div>
+  </section>
+
+  <section id="rozpis" class="team-section">
+    <div class="section-head" data-reveal>
+      <h2 class="section-title">Rozpis <span class="accent">A týmu</span></h2>
+      <span class="section-note" id="scheduleNote">Načítám...</span>
+    </div>
+    <div class="match-list" id="scheduleList" data-reveal>
+      <div class="team-loading light">Načítám rozpis...</div>
+    </div>
+    <div class="load-more-row">
+      <button type="button" class="load-more-btn" id="scheduleMore" hidden>Zobrazit další</button>
+    </div>
+  </section>
+
+  <section id="tabulka" class="team-section">
+    <div class="section-head" data-reveal>
+      <h2 class="section-title">Ligová <span class="accent">tabulka</span></h2>
+      <span class="section-note" id="standingsNote">Načítám...</span>
+    </div>
+    <div class="standings-wrap" data-reveal>
+      <table class="standings-table-team" aria-label="Ligová tabulka A týmu">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Klub</th>
+            <th>Z</th>
+            <th>V</th>
+            <th>R</th>
+            <th>P</th>
+            <th>Skóre</th>
+            <th>B</th>
+          </tr>
+        </thead>
+        <tbody id="standingsBody">
+          <tr><td colspan="8">Načítám tabulku...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="vysledky" class="team-section">
+    <div class="section-head" data-reveal>
+      <h2 class="section-title">Poslední <span class="accent">výsledky</span></h2>
+      <span class="section-note" id="resultsNote">Načítám...</span>
+    </div>
+    <div class="match-list results" id="resultsList" data-reveal>
+      <div class="team-loading light">Načítám výsledky...</div>
+    </div>
+    <div class="load-more-row">
+      <button type="button" class="load-more-btn" id="resultsMore" hidden>Zobrazit další</button>
+    </div>
+  </section>
+
+  <section id="soupiska" class="team-section team-section-last">
+    <div class="section-head" data-reveal>
+      <h2 class="section-title">Soupiska <span class="accent">A týmu</span></h2>
+      <span class="section-note" id="rosterNote">Načítám...</span>
+    </div>
+    <div class="leaders-grid" id="leadersGrid" data-reveal></div>
+    <div class="roster-groups" id="rosterGroups" data-reveal>
+      <div class="team-loading light">Načítám soupisku...</div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="kontakt" class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="" class="footer-logo">
+      <div>
+        <div class="footer-name">SK Baník <span class="accent-light">Libušín</span></div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Stadion+J.+Vintra,+Libu%C5%A1%C3%ADn" target="_blank" rel="noopener" class="footer-address">M. Pávla 726, Stadion J. Vintra, Libušín</a>
+      </div>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/skbaniklibusin/" target="_blank" rel="noopener" class="footer-social-btn">Instagram</a>
+      <a href="https://www.facebook.com/people/SK-Ban%C3%ADk-Libu%C5%A1%C3%ADn/61551993864059/" target="_blank" rel="noopener" class="footer-social-btn">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script src="a-tym.js?v=2"></script>
+</body>
+</html>

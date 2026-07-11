@@ -1,0 +1,739 @@
+[
+  {
+    "file": "afkbratronice.png",
+    "before_size": [
+      186,
+      198
+    ],
+    "after_size": [
+      186,
+      198
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 29.16
+  },
+  {
+    "file": "atletickofotbalovyklublodenice.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      200,
+      200
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 19.42
+  },
+  {
+    "file": "ceskylevunionberoun.png",
+    "before_size": [
+      186,
+      186
+    ],
+    "after_size": [
+      186,
+      186
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 21.96
+  },
+  {
+    "file": "fccechievelkadobra.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      200,
+      200
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 18.82
+  },
+  {
+    "file": "fkhredle.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      200,
+      200
+    ],
+    "removed_edge_pixels": 7390,
+    "corner_background_colors": [
+      [
+        29,
+        50,
+        33
+      ],
+      [
+        131,
+        145,
+        132
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 35.25
+  },
+  {
+    "file": "fkjinocany.png",
+    "before_size": [
+      173,
+      198
+    ],
+    "after_size": [
+      173,
+      198
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 17.66
+  },
+  {
+    "file": "fkslovankladno.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      200,
+      200
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 33.93
+  },
+  {
+    "file": "fotbalovyklubkraluvdvur.png",
+    "before_size": [
+      199,
+      199
+    ],
+    "after_size": [
+      199,
+      199
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 20.23
+  },
+  {
+    "file": "fotbalovyklubslavojkladno.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      160,
+      190
+    ],
+    "removed_edge_pixels": 16611,
+    "corner_background_colors": [
+      [
+        238,
+        226,
+        210
+      ],
+      [
+        250,
+        241,
+        224
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 23.06
+  },
+  {
+    "file": "fotbalovyklubspartakzebrak.png",
+    "before_size": [
+      199,
+      199
+    ],
+    "after_size": [
+      199,
+      199
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 21.81
+  },
+  {
+    "file": "mskklecany1921.png",
+    "before_size": [
+      169,
+      169
+    ],
+    "after_size": [
+      169,
+      169
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 21.86
+  },
+  {
+    "file": "skbraskov.png",
+    "before_size": [
+      199,
+      199
+    ],
+    "after_size": [
+      194,
+      193
+    ],
+    "removed_edge_pixels": 864,
+    "corner_background_colors": [
+      [
+        228,
+        228,
+        228
+      ],
+      [
+        197,
+        197,
+        197
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 21.18
+  },
+  {
+    "file": "skcembritberounzavodi.png",
+    "before_size": [
+      128,
+      189
+    ],
+    "after_size": [
+      128,
+      189
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 9.76
+  },
+  {
+    "file": "skdoksy.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      175,
+      200
+    ],
+    "removed_edge_pixels": 9758,
+    "corner_background_colors": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 36.52
+  },
+  {
+    "file": "skkamennezehrovice.png",
+    "before_size": [
+      200,
+      173
+    ],
+    "after_size": [
+      200,
+      171
+    ],
+    "removed_edge_pixels": 14677,
+    "corner_background_colors": [
+      [
+        178,
+        255,
+        255
+      ],
+      [
+        4,
+        156,
+        232
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 68.04
+  },
+  {
+    "file": "skkrocehlavy.png",
+    "before_size": [
+      200,
+      198
+    ],
+    "after_size": [
+      200,
+      198
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 21.64
+  },
+  {
+    "file": "skpavlikov.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      200,
+      200
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 25.66
+  },
+  {
+    "file": "sksenomaty.png",
+    "before_size": [
+      159,
+      196
+    ],
+    "after_size": [
+      159,
+      196
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 23.12
+  },
+  {
+    "file": "skslatina.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      192,
+      192
+    ],
+    "removed_edge_pixels": 10787,
+    "corner_background_colors": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 20.75
+  },
+  {
+    "file": "skslavojpozden.png",
+    "before_size": [
+      178,
+      200
+    ],
+    "after_size": [
+      152,
+      200
+    ],
+    "removed_edge_pixels": 6210,
+    "corner_background_colors": [
+      [
+        209,
+        209,
+        209
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 67.09
+  },
+  {
+    "file": "skslovandubi.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      200,
+      199
+    ],
+    "removed_edge_pixels": 3674,
+    "corner_background_colors": [
+      [
+        205,
+        205,
+        205
+      ],
+      [
+        162,
+        162,
+        162
+      ],
+      [
+        177,
+        177,
+        177
+      ],
+      [
+        140,
+        140,
+        140
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 17.67
+  },
+  {
+    "file": "slavojchrastany.png",
+    "before_size": [
+      157,
+      199
+    ],
+    "after_size": [
+      157,
+      199
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 17.99
+  },
+  {
+    "file": "sokoljedomelice.png",
+    "before_size": [
+      185,
+      200
+    ],
+    "after_size": [
+      185,
+      200
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 21.67
+  },
+  {
+    "file": "sportovniklublany.png",
+    "before_size": [
+      199,
+      200
+    ],
+    "after_size": [
+      199,
+      200
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 48.87
+  },
+  {
+    "file": "sportovniklubstehelceves.png",
+    "before_size": [
+      184,
+      191
+    ],
+    "after_size": [
+      184,
+      191
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 14.12
+  },
+  {
+    "file": "sportovniklubtlustice.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      200,
+      200
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 20.52
+  },
+  {
+    "file": "telovychovnajednotabaniksvermov.png",
+    "before_size": [
+      199,
+      199
+    ],
+    "after_size": [
+      199,
+      199
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 17.29
+  },
+  {
+    "file": "telovychovnajednotaslovanvelvary.png",
+    "before_size": [
+      199,
+      189
+    ],
+    "after_size": [
+      199,
+      189
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 21.4
+  },
+  {
+    "file": "telovychovnajednotasokollidice.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      199,
+      199
+    ],
+    "removed_edge_pixels": 399,
+    "corner_background_colors": [
+      [
+        67,
+        68,
+        70
+      ],
+      [
+        144,
+        145,
+        149
+      ],
+      [
+        115,
+        116,
+        120
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 0.01
+  },
+  {
+    "file": "telovychovnajednotasokolvrany.png",
+    "before_size": [
+      162,
+      174
+    ],
+    "after_size": [
+      162,
+      174
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 22.77
+  },
+  {
+    "file": "telovychovnajednotasportovniklubhrebec.png",
+    "before_size": [
+      199,
+      194
+    ],
+    "after_size": [
+      199,
+      194
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 24.27
+  },
+  {
+    "file": "tjaeroodolenavoda.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      200,
+      200
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 20.54
+  },
+  {
+    "file": "tjbaniklubna.png",
+    "before_size": [
+      131,
+      196
+    ],
+    "after_size": [
+      129,
+      196
+    ],
+    "removed_edge_pixels": 220,
+    "corner_background_colors": [
+      [
+        171,
+        165,
+        169
+      ],
+      [
+        235,
+        233,
+        236
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 49.47
+  },
+  {
+    "file": "tjbanikstochov.png",
+    "before_size": [
+      154,
+      196
+    ],
+    "after_size": [
+      154,
+      196
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 34.72
+  },
+  {
+    "file": "tjmeteorpletenyujezd.png",
+    "before_size": [
+      160,
+      199
+    ],
+    "after_size": [
+      160,
+      199
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 32.42
+  },
+  {
+    "file": "tjsokolhrdliv.png",
+    "before_size": [
+      173,
+      197
+    ],
+    "after_size": [
+      145,
+      195
+    ],
+    "removed_edge_pixels": 140,
+    "corner_background_colors": [
+      [
+        237,
+        237,
+        237
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 28.33
+  },
+  {
+    "file": "tjsokolmsecnovestraseci.png",
+    "before_size": [
+      184,
+      184
+    ],
+    "after_size": [
+      184,
+      184
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 21.42
+  },
+  {
+    "file": "tjsokolnovestraseci.png",
+    "before_size": [
+      129,
+      186
+    ],
+    "after_size": [
+      129,
+      186
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 22.75
+  },
+  {
+    "file": "tjunhost.png",
+    "before_size": [
+      200,
+      200
+    ],
+    "after_size": [
+      163,
+      163
+    ],
+    "removed_edge_pixels": 18922,
+    "corner_background_colors": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "has_transparency": true,
+    "transparent_pixel_percent": 20.67
+  },
+  {
+    "file": "unioncerhovice.png",
+    "before_size": [
+      157,
+      179
+    ],
+    "after_size": [
+      157,
+      179
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 30.22
+  },
+  {
+    "file": "vsenorskysk.png",
+    "before_size": [
+      181,
+      195
+    ],
+    "after_size": [
+      181,
+      195
+    ],
+    "removed_edge_pixels": 0,
+    "corner_background_colors": [],
+    "has_transparency": true,
+    "transparent_pixel_percent": 28.51
+  }
+]

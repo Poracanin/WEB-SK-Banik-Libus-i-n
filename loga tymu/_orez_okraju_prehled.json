@@ -1,0 +1,748 @@
+{
+  "threshold": 248,
+  "padding": 0,
+  "total_files": 41,
+  "changed": 27,
+  "unchanged": 14,
+  "backup_folder": "/Users/farisporacanin/Desktop/SK Baník Libušín/WEB SK Banik Libušín/loga tymu puvodni",
+  "files": [
+    {
+      "file": "afkbratronice.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 186,
+        "height": 198
+      },
+      "crop_box": {
+        "left": 9,
+        "top": 1,
+        "right": 195,
+        "bottom": 199
+      },
+      "changed": true
+    },
+    {
+      "file": "atletickofotbalovyklublodenice.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "ceskylevunionberoun.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 186,
+        "height": 186
+      },
+      "crop_box": {
+        "left": 5,
+        "top": 11,
+        "right": 191,
+        "bottom": 197
+      },
+      "changed": true
+    },
+    {
+      "file": "fccechievelkadobra.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "fkhredle.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "fkjinocany.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 173,
+        "height": 198
+      },
+      "crop_box": {
+        "left": 14,
+        "top": 2,
+        "right": 187,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "fkslovankladno.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "fotbalovyklubkraluvdvur.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 199,
+        "height": 199
+      },
+      "crop_box": {
+        "left": 1,
+        "top": 1,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "fotbalovyklubslavojkladno.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "fotbalovyklubspartakzebrak.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 199,
+        "height": 199
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 199,
+        "bottom": 199
+      },
+      "changed": true
+    },
+    {
+      "file": "mskklecany1921.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 169,
+        "height": 169
+      },
+      "crop_box": {
+        "left": 16,
+        "top": 20,
+        "right": 185,
+        "bottom": 189
+      },
+      "changed": true
+    },
+    {
+      "file": "skbraskov.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 199,
+        "height": 199
+      },
+      "crop_box": {
+        "left": 1,
+        "top": 1,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "skcembritberounzavodi.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 166,
+        "height": 194
+      },
+      "crop_box": {
+        "left": 34,
+        "top": 6,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "skdoksy.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "skkamennezehrovice.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 174
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 26,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "skkrocehlavy.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 198
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 1,
+        "right": 200,
+        "bottom": 199
+      },
+      "changed": true
+    },
+    {
+      "file": "skpavlikov.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "sksenomaty.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 160,
+        "height": 196
+      },
+      "crop_box": {
+        "left": 20,
+        "top": 4,
+        "right": 180,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "skslatina.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "skslavojpozden.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 179,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 179,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "skslovandubi.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "slavojchrastany.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 157,
+        "height": 199
+      },
+      "crop_box": {
+        "left": 22,
+        "top": 1,
+        "right": 179,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "sokoljedomelice.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 187,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 8,
+        "top": 0,
+        "right": 195,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "sportovniklublany.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "sportovniklubstehelceves.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 185,
+        "height": 191
+      },
+      "crop_box": {
+        "left": 8,
+        "top": 4,
+        "right": 193,
+        "bottom": 195
+      },
+      "changed": true
+    },
+    {
+      "file": "sportovniklubtlustice.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "telovychovnajednotabaniksvermov.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 199,
+        "height": 199
+      },
+      "crop_box": {
+        "left": 1,
+        "top": 1,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "telovychovnajednotaslovanvelvary.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 199,
+        "height": 190
+      },
+      "crop_box": {
+        "left": 1,
+        "top": 3,
+        "right": 200,
+        "bottom": 193
+      },
+      "changed": true
+    },
+    {
+      "file": "telovychovnajednotasokollidice.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "telovychovnajednotasokolvrany.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 162,
+        "height": 174
+      },
+      "crop_box": {
+        "left": 17,
+        "top": 15,
+        "right": 179,
+        "bottom": 189
+      },
+      "changed": true
+    },
+    {
+      "file": "telovychovnajednotasportovniklubhrebec.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 199,
+        "height": 196
+      },
+      "crop_box": {
+        "left": 1,
+        "top": 4,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "tjaeroodolenavoda.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "tjbaniklubna.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 131,
+        "height": 196
+      },
+      "crop_box": {
+        "left": 36,
+        "top": 3,
+        "right": 167,
+        "bottom": 199
+      },
+      "changed": true
+    },
+    {
+      "file": "tjbanikstochov.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 196,
+        "height": 196
+      },
+      "crop_box": {
+        "left": 2,
+        "top": 3,
+        "right": 198,
+        "bottom": 199
+      },
+      "changed": true
+    },
+    {
+      "file": "tjmeteorpletenyujezd.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 160,
+        "height": 199
+      },
+      "crop_box": {
+        "left": 21,
+        "top": 1,
+        "right": 181,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "tjsokolhrdliv.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 199,
+        "height": 198
+      },
+      "crop_box": {
+        "left": 1,
+        "top": 2,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": true
+    },
+    {
+      "file": "tjsokolmsecnovestraseci.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 184,
+        "height": 185
+      },
+      "crop_box": {
+        "left": 9,
+        "top": 8,
+        "right": 193,
+        "bottom": 193
+      },
+      "changed": true
+    },
+    {
+      "file": "tjsokolnovestraseci.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 130,
+        "height": 186
+      },
+      "crop_box": {
+        "left": 35,
+        "top": 5,
+        "right": 165,
+        "bottom": 191
+      },
+      "changed": true
+    },
+    {
+      "file": "tjunhost.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 200,
+        "height": 200
+      },
+      "crop_box": {
+        "left": 0,
+        "top": 0,
+        "right": 200,
+        "bottom": 200
+      },
+      "changed": false
+    },
+    {
+      "file": "unioncerhovice.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 157,
+        "height": 179
+      },
+      "crop_box": {
+        "left": 22,
+        "top": 10,
+        "right": 179,
+        "bottom": 189
+      },
+      "changed": true
+    },
+    {
+      "file": "vsenorskysk.jpg",
+      "before": {
+        "width": 200,
+        "height": 200
+      },
+      "after": {
+        "width": 182,
+        "height": 195
+      },
+      "crop_box": {
+        "left": 1,
+        "top": 2,
+        "right": 183,
+        "bottom": 197
+      },
+      "changed": true
+    }
+  ]
+}

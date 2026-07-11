@@ -1,0 +1,475 @@
+{
+  "total_opponents": 41,
+  "downloaded": 41,
+  "failed": [],
+  "logos": [
+    {
+      "file": "afkbratronice.jpg",
+      "club_name": "AFK Bratronice,z.s.",
+      "club_id": "2030061",
+      "club_uuid": "ec231111-cc35-4c91-aa28-4c82793ae0a9",
+      "used_by": [
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "atletickofotbalovyklublodenice.jpg",
+      "club_name": "Atleticko-Fotbalový Klub Loděnice, z.s.",
+      "club_id": "2020251",
+      "club_uuid": "fde98970-8868-4c9d-8407-275d39398801",
+      "used_by": [
+        "aktualni_a_tym",
+        "aktualni_dorost",
+        "minula_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "fccechievelkadobra.jpg",
+      "club_name": "FC Čechie Velká Dobrá z.s.",
+      "club_id": "2030531",
+      "club_uuid": "92fc5f91-1b61-4349-9407-498127ffd191",
+      "used_by": [
+        "aktualni_a_tym",
+        "minula_a_tym",
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "fkhredle.jpg",
+      "club_name": "FK Hředle, z.s.",
+      "club_id": "20C0451",
+      "club_uuid": "a7196fee-54ff-412e-9d26-37efc2f670cd",
+      "used_by": [
+        "minula_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "fkjinocany.jpg",
+      "club_name": "FK Jinočany, zapsaný spolek",
+      "club_id": "20A0241",
+      "club_uuid": "10507e13-1d54-484d-b419-bd00c2c29074",
+      "used_by": [
+        "aktualni_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "fkslovankladno.jpg",
+      "club_name": "FK Slovan Kladno, z.s.",
+      "club_id": "2030241",
+      "club_uuid": "60a2f955-9b7b-4907-bb46-954fe3c2f8ef",
+      "used_by": [
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "fotbalovyklubkraluvdvur.jpg",
+      "club_name": "Fotbalový klub Králův Dvůr z.s.",
+      "club_id": "2020211",
+      "club_uuid": "f4cb761d-572c-46ad-801f-5ee0e2a823c0",
+      "used_by": [
+        "aktualni_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "fotbalovyklubslavojkladno.jpg",
+      "club_name": "Fotbalový klub Slavoj Kladno, z.s.",
+      "club_id": "2030201",
+      "club_uuid": "9ea7635a-405e-4834-bf1e-3f3410e5ae8a",
+      "used_by": [
+        "aktualni_a_tym",
+        "aktualni_dorost",
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "fotbalovyklubspartakzebrak.jpg",
+      "club_name": "Fotbalový klub Spartak Žebrák, z.s.",
+      "club_id": "2020651",
+      "club_uuid": "e57bf61a-62c1-4ae4-a28f-ca1f63681ec1",
+      "used_by": [
+        "aktualni_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "mskklecany1921.jpg",
+      "club_name": "MSK Klecany 1921, z.s.",
+      "club_id": "2090191",
+      "club_uuid": "f3c6d68c-d99d-4de5-b30e-e697f05f07e9",
+      "used_by": [
+        "aktualni_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "skbraskov.jpg",
+      "club_name": "SK Braškov, z.s.",
+      "club_id": "2030051",
+      "club_uuid": "889e9158-afa2-4dd0-a4d9-df44683b3e7d",
+      "used_by": [
+        "aktualni_a_tym",
+        "minula_a_tym",
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "skcembritberounzavodi.jpg",
+      "club_name": "SK Cembrit Beroun - Závodí, z.s.",
+      "club_id": "2020031",
+      "club_uuid": "2a50a09b-4530-4485-b07a-57bdde487a25",
+      "used_by": [
+        "aktualni_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "skdoksy.jpg",
+      "club_name": "SK Doksy z.s.",
+      "club_id": "2030091",
+      "club_uuid": "f7f247fe-8109-4625-a757-2e28ba5a84e0",
+      "used_by": [
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "skkamennezehrovice.jpg",
+      "club_name": "SK Kamenné Žehrovice, z.s.",
+      "club_id": "2030191",
+      "club_uuid": "783a168f-3e9d-4c79-953f-c389770c3c09",
+      "used_by": [
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "skkrocehlavy.jpg",
+      "club_name": "SK KROČEHLAVY, z.s.",
+      "club_id": "2030291",
+      "club_uuid": "cf2bb14b-9f2b-417e-ba97-aa417468958f",
+      "used_by": [
+        "minula_b_tym",
+        "minula_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "skpavlikov.jpg",
+      "club_name": "SK Pavlíkov, z.s.",
+      "club_id": "20C0241",
+      "club_uuid": "ab1b1e79-1b3d-4780-8dd9-b2b5d5ded30b",
+      "used_by": [
+        "minula_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "sksenomaty.jpg",
+      "club_name": "SK SENOMATY, z.s.",
+      "club_id": "20C0331",
+      "club_uuid": "11aa716a-5809-4b2f-bcaa-64219a9ea989",
+      "used_by": [
+        "aktualni_a_tym",
+        "aktualni_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "skslatina.jpg",
+      "club_name": "SK Slatina,z.s.",
+      "club_id": "2030411",
+      "club_uuid": "05a37280-b547-4649-be61-3fb0af6be52d",
+      "used_by": [
+        "minula_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "skslavojpozden.jpg",
+      "club_name": "SK Slavoj Pozdeň, z.s.",
+      "club_id": "2030131",
+      "club_uuid": "1b6a79da-10c6-4d2b-be90-128eb34af2f0",
+      "used_by": [
+        "minula_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "skslovandubi.jpg",
+      "club_name": "SK Slovan Dubí, z.s.",
+      "club_id": "2030121",
+      "club_uuid": "28eedcbc-8999-48f3-8822-69b86055c6f2",
+      "used_by": [
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "slavojchrastany.jpg",
+      "club_name": "Slavoj Chrášťany, z.s.",
+      "club_id": "20C0051",
+      "club_uuid": "d94c238b-ab95-4b31-99fa-72f6ad7b3974",
+      "used_by": [
+        "minula_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "sokoljedomelice.jpg",
+      "club_name": "Sokol Jedomělice z.s.",
+      "club_id": "2030171",
+      "club_uuid": "a198e40e-e00c-4938-bef9-b6e69e49c306",
+      "used_by": [
+        "minula_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "sportovniklublany.jpg",
+      "club_name": "Sportovní klub Lány, spolek",
+      "club_id": "20C0121",
+      "club_uuid": "e6333e55-7d3d-4599-8d76-cc01cb9b8836",
+      "used_by": [
+        "minula_a_tym",
+        "minula_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "sportovniklubstehelceves.jpg",
+      "club_name": "Sportovní klub Stehelčeves z.s.",
+      "club_id": "2030441",
+      "club_uuid": "a37eea7f-49b1-4e07-ab35-a85316c8e413",
+      "used_by": [
+        "aktualni_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "sportovniklubtlustice.jpg",
+      "club_name": "Sportovní klub Tlustice",
+      "club_id": "2020431",
+      "club_uuid": "d211df74-eb20-413e-b142-63bde2b21d55",
+      "used_by": [
+        "aktualni_a_tym",
+        "minula_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "tjaeroodolenavoda.jpg",
+      "club_name": "TJ Aero Odolena Voda, z.s.",
+      "club_id": "2090361",
+      "club_uuid": "d8f96d15-65a8-46b5-b894-36c8a00d9e4c",
+      "used_by": [
+        "aktualni_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "tjbaniklubna.jpg",
+      "club_name": "TJ Baník Lubná, z.s.",
+      "club_id": "20C0161",
+      "club_uuid": "be23acc4-7954-47f7-bf83-d31e31e328aa",
+      "used_by": [
+        "minula_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "tjbanikstochov.jpg",
+      "club_name": "TJ Baník Stochov,z.s.",
+      "club_id": "2030451",
+      "club_uuid": "0be4318b-aecd-4f0b-a9f3-8b58ec66048d",
+      "used_by": [
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "tjmeteorpletenyujezd.jpg",
+      "club_name": "TJ Meteor Pletený Újezd, z.s.",
+      "club_id": "2030371",
+      "club_uuid": "a5cfa3fe-26c7-4faa-87db-e3167ff0ab15",
+      "used_by": [
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "tjsokolhrdliv.jpg",
+      "club_name": "TJ Sokol Hrdlív, z.s.",
+      "club_id": "2030151",
+      "club_uuid": "a9e56fdc-65ed-43b8-873f-4c9ad0e5a98d",
+      "used_by": [
+        "minula_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "tjsokolmsecnovestraseci.jpg",
+      "club_name": "TJ Sokol Mšec - Nové Strašecí, z.s.",
+      "club_id": "20C0191",
+      "club_uuid": "fd0765c6-53fe-41c1-b7f9-df14942cfbf6",
+      "used_by": [
+        "minula_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "tjsokolnovestraseci.jpg",
+      "club_name": "TJ Sokol Nové Strašecí z. s.",
+      "club_id": "20C0211",
+      "club_uuid": "a52c85f3-7887-47f9-85f1-d55476049b49",
+      "used_by": [
+        "aktualni_a_tym",
+        "minula_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "tjunhost.jpg",
+      "club_name": "TJ Unhošť z.s.",
+      "club_id": "2030521",
+      "club_uuid": "c82e934d-55d5-4d24-b59d-41511856309a",
+      "used_by": [
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "telovychovnajednotabaniksvermov.jpg",
+      "club_name": "Tělovýchovná jednota Baník Švermov z.s.",
+      "club_id": "2030471",
+      "club_uuid": "2976b0f7-bbd6-43c8-ac8e-6f5e5ceb93d1",
+      "used_by": [
+        "aktualni_dorost"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "telovychovnajednotaslovanvelvary.jpg",
+      "club_name": "Tělovýchovná jednota Slovan Velvary, z.s.",
+      "club_id": "2030551",
+      "club_uuid": "afab894a-cb62-421d-b76a-366e38cd14d4",
+      "used_by": [
+        "aktualni_a_tym",
+        "minula_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "telovychovnajednotasokollidice.jpg",
+      "club_name": "Tělovýchovná jednota Sokol Lidice, z.s.",
+      "club_id": "2030321",
+      "club_uuid": "f3dd6c42-638a-4549-9da5-3111e28eeb92",
+      "used_by": [
+        "minula_b_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "telovychovnajednotasokolvrany.jpg",
+      "club_name": "Tělovýchovná jednota SOKOL VRANÝ z.s.",
+      "club_id": "2030571",
+      "club_uuid": "9b80ac73-198a-4006-acdf-1746a2424051",
+      "used_by": [
+        "aktualni_a_tym",
+        "minula_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "telovychovnajednotasportovniklubhrebec.jpg",
+      "club_name": "Tělovýchovná jednota sportovní klub Hřebeč z.s.",
+      "club_id": "2030161",
+      "club_uuid": "b7139ac6-a87e-4f5b-8db1-571e5fc2a079",
+      "used_by": [
+        "aktualni_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "unioncerhovice.jpg",
+      "club_name": "UNION CERHOVICE",
+      "club_id": "2020081",
+      "club_uuid": "8543b81e-b216-41ef-bf45-3b70e4a61ceb",
+      "used_by": [
+        "aktualni_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "vsenorskysk.jpg",
+      "club_name": "Všenorský SK, z.s.",
+      "club_id": "20A0591",
+      "club_uuid": "096734d7-a04a-420f-ac9d-c4d7ae3bde5f",
+      "used_by": [
+        "minula_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    },
+    {
+      "file": "ceskylevunionberoun.jpg",
+      "club_name": "Český lev - Union Beroun, z.s.",
+      "club_id": "2020601",
+      "club_uuid": "d67f36db-4c84-48a6-a391-7e9600ad0e94",
+      "used_by": [
+        "aktualni_a_tym",
+        "aktualni_dorost",
+        "minula_a_tym"
+      ],
+      "status": "downloaded",
+      "error": null
+    }
+  ]
+}

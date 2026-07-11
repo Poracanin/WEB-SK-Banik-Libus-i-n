@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Klubu - SK Baník Libušín</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-red-new: #DC2626; /* R220 G38 B38 (Tailwind red-600) */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1F2937;
+        }
+
+        .font-heading { font-family: 'Oswald', sans-serif; }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Mobilní menu - Styly z předchozí verze */
+        #mobile-menu-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            z-index: 100; display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease-in-out; pointer-events: none;
+        }
+        #mobile-menu-overlay.active { opacity: 1; pointer-events: auto; }
+        #mobile-menu-content {
+            background-color: rgba(255, 255, 255, 0.8); padding: 1.5rem;
+            border-radius: 1rem; width: 90%; max-width: 350px;
+            text-align: left; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        #mobile-menu-close {
+             position: absolute; top: 0.5rem; right: 0.5rem; color: #4B5563;
+             padding: 0.5rem; background-color: rgba(0, 0, 0, 0.05); border-radius: 50%; cursor: pointer;
+         }
+        .mobile-menu-item-wrapper { position: relative; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+        .mobile-menu-item-wrapper:last-child { border-bottom: none; }
+        .mobile-menu-main-item { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .submenu-toggle-arrow { padding: 0.75rem 0.5rem; color: #6B7280; transition: transform 0.3s ease; flex-shrink: 0; }
+        .submenu-toggle-arrow.open { transform: rotate(180deg); }
+        #mobile-menu-links > div > .mobile-menu-main-item > a {
+             display: block; padding: 0.75rem 0.5rem; font-family: 'Inter', sans-serif; font-size: 1rem;
+             font-weight: 600; color: #1F2937; transition: color 0.2s; flex-grow: 1; margin-right: 0.5rem;
+         }
+         #mobile-menu-links > div > .mobile-menu-main-item > a:hover { color: var(--brand-red-new); }
+         #mobile-menu-links .mobile-submenu {
+             max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+             padding-left: 1.5rem; background-color: rgba(0,0,0,0.03);
+         }
+         #mobile-menu-links .mobile-submenu.open { max-height: 500px; padding-top: 0.25rem; padding-bottom: 0.5rem; }
+         #mobile-menu-links .mobile-submenu a {
+             font-size: 0.9rem; padding: 0.4rem 0.5rem; font-family: 'Inter', sans-serif; font-weight: 500;
+             color: #374151; display: block; transition: color 0.2s;
+         }
+         #mobile-menu-links .mobile-submenu a:hover { color: var(--brand-red-new); }
+         #mobile-menu-button { background: none !important; border: none !important; box-shadow: none !important; outline: none !important; }
+
+    </style>
+</head>
+
+<body>
+
+<header class="text-white text-xs py-2 sticky top-0 z-50" style="background-color: var(--brand-red-new)">
+    <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
+        <!-- Kontakty vlevo -->
+        <div class="flex items-center space-x-4 flex-grow md:flex-grow-0 mb-1 md:mb-0">
+             <!-- ZMĚNA: Přidán odkaz na mapu -->
+            <a href="https://www.google.com/maps/search/?api=1&query=Stadion+J.+Vintra,+Libu%C5%A1%C3%ADn" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1 text-white hover:text-gray-200 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg>
+                <span class="truncate max-w-[200px] sm:max-w-none">M.Pávla 726, Stadion J.Vintra, Libušín</span>
+            </a>
+        </div>
+        <!-- Sociální sítě vpravo -->
+        <div class="flex items-center space-x-3">
+             <a href="https://www.instagram.com/skbaniklibusin/?igsh=ZDUydGdlNWdjZjI2#" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-200 transition-colors flex items-center space-x-1">
+                 <img src="https://dekorartprague.cz/wp-content/uploads/2025/10/2.png" alt="Instagram" class="h-4 w-4">
+                 <span class="hidden md:inline">Instagram</span>
+             </a>
+             <a href="https://www.facebook.com/people/SK-Ban%C3%ADk-Libu%C5%A1%C3%ADn/61551993864059/?mibextid=wwXIfr&rdid=OuJ4SbXqbjyEvXNO&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1YDexdTCS7%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-200 transition-colors flex items-center space-x-1">
+                 <img src="https://dekorartprague.cz/wp-content/uploads/2025/10/1.png" alt="Facebook" class="h-4 w-4">
+                 <span class="hidden md:inline">Facebook</span>
+             </a>
+        </div>
+    </div>
+</header>
+
+<nav class="glass-effect sticky top-7 z-50 shadow-lg border-b border-white/20 bg-white/80"> <!-- Přidáno lehké bílé pozadí -->
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-3">
+            <!-- ZMĚNA: Přidán odkaz na hlavní stránku -->
+            <a href="https://skbaniklibusin.cz/" class="flex items-center space-x-3">
+                <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="Logo SK Baník Libušín" class="h-12 w-12 object-contain">
+                <span class="font-heading text-xl font-bold text-gray-700 tracking-tight uppercase">
+                    SK Baník <span class="text-[var(--brand-red-new)]">Libušín</span>
+                </span>
+            </a>
+            <!-- Desktop Menu - Načte se dynamicky -->
+            <div id="desktop-menu-container" class="hidden md:flex items-center space-x-2">
+                <span class="text-gray-500 text-xs px-3">Načítám menu...</span>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-[var(--brand-red-new)] p-1 rounded-md focus:outline-none focus:ring-0">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="pt-10 pb-16"> <!-- Přidán padding nahoře a dole -->
+    <div class="container mx-auto px-4">
+
+        <h1 class="font-heading text-4xl md:text-5xl font-bold text-center mb-12">
+            O <span class="text-[var(--brand-red-new)]">Klubu</span>
+        </h1>
+
+        <div class="max-w-3xl mx-auto space-y-8 text-gray-700 leading-relaxed">
+            <p>
+                SK Baník Libušín z.s. je dobrovolným sdružením, jehož hlavní činností je podpora tělovýchovy a sportu ve městě Libušín. Založen s vizí rozvíjet sportovní aktivity a posilovat komunitní ducha, klub se zaměřuje na různé generace sportovců, od mládeže po seniory.
+            </p>
+            <p>
+                Hlavním sportem je fotbal, který klub podporuje na všech úrovních, od okresních soutěží až po podporu mladých talentů. SK Baník Libušín se také věnuje organizaci kulturních a společenských akcí, které přispívají k oživení veřejného života v městě. V minulosti byl součástí klubu i ženský fotbalový tým, nicméně současná aktivita se soustředí na rozvoj mužského a mládežnického fotbalu.
+            </p>
+
+            <!-- Výbor klubu -->
+            <div class="bg-gray-100 p-6 rounded-lg shadow-sm">
+                <h2 class="font-heading text-2xl font-semibold text-gray-800 mb-4">Vedení Klubu</h2>
+                <ul class="list-disc list-inside space-y-1">
+                    <li><span class="font-semibold">Prezident klubu:</span> Martin Holas</li>
+                    <li><span class="font-semibold">Sekretář klubu:</span> Milan Drahoš</li>
+                    <li><span class="font-semibold">Hospodář klubu:</span> Martin Ježek</li>
+                    <li><span class="font-semibold">Člen výkonného výboru:</span> David Portužák</li>
+                    <li><span class="font-semibold">Člen výkonného výboru:</span> Jan Kopřiva</li>
+                    <li><span class="font-semibold">Člen výkonného výboru:</span> Lukáš Křenek</li>
+                    <li><span class="font-semibold">Člen výkonného výboru:</span> Ondřej Číž</li>
+                </ul>
+            </div>
+
+            <!-- Stanovy -->
+            <div>
+                 <h2 class="font-heading text-2xl font-semibold text-gray-800 mb-3">Stanovy Klubu</h2>
+                 <p>
+                     Aktualizované stanovy SK Baník Libušín, které obsahují všechny informace o pravidlech a fungování klubu, jsou k dispozici pro stažení
+                     <a href="https://skbaniklibusin.cz/wp-content/uploads/2024/04/Stanovy-SK-Banik-Libusin-z.s.2015.pdf" target="_blank" rel="noopener noreferrer" class="text-[var(--brand-red-new)] hover:underline font-semibold">
+                         zde (PDF)
+                     </a>.
+                 </p>
+            </div>
+
+            <!-- Stadion -->
+            <div class="border-t border-gray-200 pt-8">
+                <h2 class="font-heading text-3xl font-bold text-gray-800 mb-6">Stadion Jaroslava Vintra</h2>
+                <p class="mb-4">
+                    Hlavní hřiště má rozměry 102 x 70 m a součástí areálu je i škvárové hřiště o velikosti 90 x 60 m. Nově vybudované dětské hřiště zpříjemní návštěvu rodinám s dětmi. Pro všechny generace je k dispozici občerstvení, jehož provozní doba odpovídá tréninkům a zápasům.
+                </p>
+                 <p class="mb-6">
+                    Stadion, pojmenovaný na počest Jaroslava Vintra, vynikajícího libušínského sportovce, který byl vězněn v Terezíně a v roce 1944 popraven v Drážďanech, se stal symbolem obnovy a pokroku našeho klubu. Stadion Jaroslava Vintra dnes stojí jako hrdý symbol našeho klubu. S moderními zařízeními a vynikajícími podmínkami pro hráče i fanoušky, je stadion nejen místem sportovních výkonů, ale i srdcem komunity, které spojuje láska k fotbalu a hrdost na naše město Libušín.
+                </p>
+
+                <!-- Fotky stadionu -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <figure>
+                         <img src="https://skbaniklibusin.cz/wp-content/uploads/2024/04/hriste-stare.png" alt="Historická fotka stadionu" class="rounded-lg shadow-md w-full h-auto object-cover border border-gray-200">
+                         <figcaption class="text-center text-sm text-gray-600 mt-2">Slavnostní otevření stadionu 11. 6. 1977</figcaption>
+                    </figure>
+                     <figure>
+                         <img src="https://skbaniklibusin.cz/wp-content/uploads/2024/04/hriste-dron.png" alt="Aktuální fotka stadionu" class="rounded-lg shadow-md w-full h-auto object-cover border border-gray-200">
+                          <figcaption class="text-center text-sm text-gray-600 mt-2">Stadion v roce 2023 (11. 3. 2023)</figcaption>
+                     </figure>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</main>
+
+<!-- Mobilní menu -->
+<div id="mobile-menu-overlay" class="">
+    <div id="mobile-menu-content">
+        <button id="mobile-menu-close" class="">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <div id="mobile-menu-links">
+             <span class="text-gray-500 text-base">Načítám menu...</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- Rekurzivní funkce pro menu DOM ---
+    function buildMenuDOM(container, items, isMobile = false) {
+        if (!items || items.length === 0) {
+            if (container) container.innerHTML = ''; 
+            return;
+        }
+
+        items.forEach(item => {
+            const hasChildren = item.children && item.children.length > 0;
+            const menuItemWrapper = document.createElement('div'); 
+
+            const link = document.createElement('a');
+            link.href = item.url || '#';
+            link.textContent = item.title;
+
+            if (isMobile) {
+                // --- Mobilní menu ---
+                menuItemWrapper.className = 'mobile-menu-item-wrapper';
+                const mainItemContainer = document.createElement('div');
+                mainItemContainer.className = 'mobile-menu-main-item';
+                mainItemContainer.appendChild(link); 
+
+                if (hasChildren) {
+                    const arrow = document.createElement('span');
+                    arrow.className = 'submenu-toggle-arrow';
+                    arrow.innerHTML = '▼';
+                    mainItemContainer.appendChild(arrow); 
+
+                    mainItemContainer.onclick = (e) => {
+                        e.stopPropagation(); 
+                        const subMenu = menuItemWrapper.querySelector('.mobile-submenu');
+                        const arrowEl = mainItemContainer.querySelector('.submenu-toggle-arrow');
+                        if (subMenu && arrowEl) {
+                            subMenu.classList.toggle('open');
+                            arrowEl.classList.toggle('open');
+                        }
+                    };
+                    
+                    link.onclick = (e) => { if (hasChildren) e.preventDefault(); };
+
+                    const subContainer = document.createElement('div');
+                    subContainer.className = 'mobile-submenu';
+                    buildMenuDOM(subContainer, item.children, true);
+                    menuItemWrapper.appendChild(mainItemContainer); 
+                    menuItemWrapper.appendChild(subContainer); 
+                } else {
+                     menuItemWrapper.appendChild(mainItemContainer);
+                }
+                container.appendChild(menuItemWrapper); 
+
+            } else {
+                // --- Desktop menu ---
+                menuItemWrapper.className = 'relative group';
+                link.className = 'text-gray-600 font-semibold hover:text-[var(--brand-red-new)] px-3 py-2 text-sm'; 
+                menuItemWrapper.appendChild(link);
+
+                if (hasChildren) {
+                    const subMenu = document.createElement('div');
+                    subMenu.className = 'absolute top-full left-0 bg-white shadow-lg rounded-md mt-1 py-1 min-w-[200px] z-20 hidden group-hover:block';
+                    buildMenuDOM(subMenu, item.children, false);
+                    menuItemWrapper.appendChild(subMenu);
+                    subMenu.querySelectorAll('a').forEach(subLink => {
+                        subLink.className = 'block text-gray-700 hover:text-[var(--brand-red-new)] px-4 py-2 text-sm';
+                    });
+                }
+                container.appendChild(menuItemWrapper);
+            }
+        });
+     }
+
+    // --- Funkce pro načtení menu ---
+    async function fetchMenu() {
+        const menuApiUrl = 'https://skbaniklibusin.cz/wp-json/mojemenu/v1/moje-menu'; 
+        const desktopMenuContainer = document.getElementById('desktop-menu-container');
+        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
+
+        if (desktopMenuContainer) desktopMenuContainer.innerHTML = `<span class="text-gray-500 text-xs px-3">Načítám menu...</span>`;
+        if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = `<span class="text-gray-500 text-base">Načítám menu...</span>`;
+
+        try {
+            const response = await fetch(menuApiUrl);
+            if (!response.ok) {
+                 const errorData = await response.json();
+                 throw new Error(errorData.message || `Chyba ${response.status}: ${response.statusText}`);
+            }
+            const menuItems = await response.json();
+
+            if (menuItems && menuItems.length > 0) {
+                 if (desktopMenuContainer) desktopMenuContainer.innerHTML = '';
+                 if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
+                buildMenuDOM(desktopMenuContainer, menuItems, false); // Desktop
+                buildMenuDOM(mobileMenuLinksContainer, menuItems, true);  // Mobile
+            } else {
+                throw new Error("API vrátilo prázdné menu.");
+            }
+        } catch (error) {
+            console.error('Nepodařilo se načíst menu dynamicky:', error); 
+            const errorMessage = `<span class="text-red-600 text-xs px-3">Chyba načtení menu</span>`;
+            const mobileErrorMessage = `<span class="text-red-600 text-base">Chyba načtení menu</span>`;
+             if (desktopMenuContainer) desktopMenuContainer.innerHTML = errorMessage;
+             if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = mobileErrorMessage;
+        }
+     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchMenu();
+
+        // Mobilní menu
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const closeButton = document.getElementById('mobile-menu-close');
+        
+        const openMenu = () => mobileMenuOverlay.classList.add('active');
+        const closeMenu = () => mobileMenuOverlay.classList.remove('active');
+
+        menuButton.addEventListener('click', openMenu);
+        closeButton.addEventListener('click', closeMenu);
+        mobileMenuOverlay.addEventListener('click', (event) => {
+            const linkClicked = event.target.tagName === 'A';
+            const hasSubmenu = event.target.closest('.mobile-menu-item-wrapper')?.querySelector('.submenu-toggle-arrow');
+            const clickedOnOverlay = event.target === mobileMenuOverlay;
+            if ((linkClicked && !hasSubmenu) || clickedOnOverlay) {
+                closeMenu();
+            }
+         });
+    });
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zápatí SK Baník Libušín</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF; /* Bílé pozadí stránky */
+            color: #1F2937; /* Tmavě šedá pro text */
+        }
+        .font-heading {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        /* --- Styly pro animovaný karusel --- */
+        .scrolling-logos {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            padding: 20px 0;
+            background-color: #ffffff; /* Bílé pozadí pro karusel */
+        }
+
+        /* Přechody pro plynulý efekt na krajích */
+        .scrolling-logos::before,
+        .scrolling-logos::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px; /* Šířka přechodu */
+            height: 100%;
+            z-index: 2; /* Nad logy */
+            pointer-events: none;
+        }
+
+        .scrolling-logos::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 100%);
+        }
+
+        .scrolling-logos::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 100%);
+        }
+
+        .scrolling-logos-inner {
+            display: inline-block;
+            animation: scroll-left 40s linear infinite; /* Zpomaleno */
+        }
+
+        .scrolling-logos:hover .scrolling-logos-inner {
+            animation-play-state: paused;
+        }
+
+        .logo-item {
+            display: inline-block;
+            margin: 0 15px; /* Výchozí mezera pro mobil */
+            vertical-align: middle;
+            height: 50px; /* Menší výška log */
+            filter: grayscale(100%); /* Černobílé */
+            opacity: 0.6; /* Lehce průhledné */
+            transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        }
+        .logo-item:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1); /* Lehké zvětšení */
+        }
+
+        .logo-item img {
+            max-height: 100%;
+            max-width: none;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Zduplikujeme obsah pro plynulou nekonečnou animaci */
+        .scrolling-logos-inner > * {
+            display: inline-block;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Větší mezery pro širší obrazovky */
+        @media (min-width: 768px) {
+            .logo-item {
+                 margin: 0 30px; /* Původní mezera pro desktop */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ----- Začátek sekce Zápatí ----- -->
+    <footer class="border-t border-gray-300 pt-12">
+        
+        <!-- Nadpis sekce partnerů -->
+        <h3 class="font-heading text-2xl md:text-3xl font-bold text-gray-800 text-center mb-8">
+            Naši <span class="text-red-600">Partneři</span>
+        </h3>
+
+        <!-- Sekce: Sponzoři a Partneři - Animovaný karusel -->
+        <div class="scrolling-logos">
+            <div class="scrolling-logos-inner">
+                <!-- Loga partnerů (zahrnuje i Sportovní kliniku) -->
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/154cs_2_big.jpg" alt="Logo Město Libušín"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/Sol.jpg" alt="Logo Sol substráty"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/HELUKABEL-Schweiz-Logo.png" alt="Logo Helukabel"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/FACR_logo_primarni_RGB.png" alt="Logo FAČR"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/skfs-200.png" alt="Logo SKFS"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/OFS-Kladno2_association.png" alt="Logo OFS Kladno"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/12/sportovni-klinika.png" alt="Logo Sportovní klinika"></div>
+
+                <!-- Duplikace pro plynulost animace -->
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/154cs_2_big.jpg" alt="Logo Město Libušín"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/Sol.jpg" alt="Logo Sol substráty"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/HELUKABEL-Schweiz-Logo.png" alt="Logo Helukabel"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/FACR_logo_primarni_RGB.png" alt="Logo FAČR"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/skfs-200.png" alt="Logo SKFS"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/OFS-Kladno2_association.png" alt="Logo OFS Kladno"></div>
+                <div class="logo-item"><img src="https://skbaniklibusin.cz/wp-content/uploads/2025/12/sportovni-klinika.png" alt="Logo Sportovní klinika"></div>
+            </div>
+        </div>
+
+        <!-- Sekce: Kredity - Zelené pozadí -->
+        <div class="bg-green-700 text-green-100 py-4 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-y-3 sm:gap-y-0 items-center text-xs">
+                
+                <!-- 1. Ochrana osobních údajů (Zarovnáno vlevo) -->
+                <div class="text-center sm:text-left order-2 sm:order-1">
+                    <a href="https://skbaniklibusin.cz/ochrana-osobnich-udaju/" class="hover:text-white underline transition-colors">Ochrana osobních údajů</a>
+                </div>
+
+                <!-- 2. Copyright (Přesně uprostřed stránky) -->
+                <div class="text-center order-1 sm:order-2">
+                    <p>&copy; <span id="current-year"></span> SK Baník Libušín. Všechna práva vyhrazena.</p>
+                </div>
+                
+                <!-- 3. Autor (Zarovnáno vpravo) -->
+                <div class="text-center sm:text-right order-3 sm:order-3">
+                    <p>Webové stránky vytvořil Faris Poračanin</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- ----- Konec sekce Zápatí ----- -->
+
+    <script>
+         // Dynamické nastavení aktuálního roku
+         document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
