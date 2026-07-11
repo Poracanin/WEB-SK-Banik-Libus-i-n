@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>O klubu | SK Baník Libušín</title>
+<title>Obsazenost hřiště | SK Baník Libušín</title>
 <link rel="icon" href="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="homepage.css">
 <link rel="stylesheet" href="page.css?v=2">
+<link rel="stylesheet" href="hriste.css?v=1">
 </head>
-<body class="subpage" style="--page-hero-image: url('https://skbaniklibusin.cz/wp-content/uploads/2024/04/hriste-dron.png'); --page-hero-position: center 40%;">
+<body class="subpage field-page" style="--page-hero-image: url('https://skbaniklibusin.cz/wp-content/uploads/2024/04/hriste-dron.png'); --page-hero-position: center 42%;">
 
 <!-- ============ NAV ============ -->
 <div class="nav" id="nav">
@@ -24,12 +25,12 @@
     </div>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Domů</a>
-      <a href="klub.html" class="active">Klub</a>
+      <a href="klub.html">Klub</a>
       <a href="a-tym.html">A-Tým</a>
       <a href="b-tym.html">B-Tým</a>
       <a href="dorost.html">Dorost</a>
       <a href="hymna.html">Hymna</a>
-      <a href="hriste.html">Hřiště</a>
+      <a href="hriste.html" class="active">Hřiště</a>
       <a href="kontakty.html">Kontakty</a>
     </div>
     <button type="button" class="nav-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="navModal">
@@ -57,7 +58,7 @@
         <span class="ni-label">Domů</span>
         <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
       </a>
-      <a href="klub.html" class="active">
+      <a href="klub.html">
         <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"></path></svg></span>
         <span class="ni-label">Klub</span>
         <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
@@ -82,7 +83,7 @@
         <span class="ni-label">Hymna</span>
         <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
       </a>
-      <a href="hriste.html">
+      <a href="hriste.html" class="active">
         <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M8 2v4M16 2v4M3 10h18"></path></svg></span>
         <span class="ni-label">Hřiště</span>
         <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
@@ -107,112 +108,113 @@
 </div>
 
 <!-- ============ HERO ============ -->
-<header class="page-hero">
+<header class="page-hero field-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-wash"></div>
   <div class="page-hero-inner" data-reveal>
-    <span class="page-kicker">Historie &amp; vedení</span>
-    <h1>O klubu</h1>
-    <p class="page-hero-sub">Podpora tělovýchovy, sportu a komunitního života ve městě Libušín.</p>
+    <span class="page-kicker">Demo rozvrh</span>
+    <h1>Obsazenost hřiště</h1>
+    <p class="page-hero-sub">Přehled hřiště a klubovny zatím s ukázkovými daty. Později sem napojíme skutečný klubový kalendář.</p>
   </div>
 </header>
 
-<main class="page-body club-page">
-
-  <section class="club-intro" data-reveal>
-    <div class="club-intro-copy">
-      <span class="club-eyebrow">SK Baník Libušín</span>
-      <h2>Náš <span class="accent">příběh</span></h2>
-      <p>SK Baník Libušín z.s. je dobrovolným sdružením, jehož hlavní činností je podpora tělovýchovy a sportu ve městě Libušín. Založen s vizí rozvíjet sportovní aktivity a posilovat komunitní ducha, klub se zaměřuje na různé generace sportovců, od mládeže po seniory.</p>
-      <p>Hlavním sportem je fotbal, který klub podporuje na všech úrovních, od okresních soutěží až po podporu mladých talentů. SK Baník Libušín se také věnuje organizaci kulturních a společenských akcí, které přispívají k oživení veřejného života v městě. V minulosti byl součástí klubu i ženský fotbalový tým, nicméně současná aktivita se soustředí na rozvoj mužského a mládežnického fotbalu.</p>
-    </div>
-    <figure class="club-feature-photo">
-      <img src="https://skbaniklibusin.cz/wp-content/uploads/2024/04/hriste-dron.png" alt="Letecký pohled na stadion SK Baník Libušín" loading="eager">
-    </figure>
-  </section>
-
-  <section class="club-stat-grid" aria-label="Rychlá fakta o klubu" data-reveal>
-    <div class="club-stat-card">
-      <div class="club-stat-value">Fotbal</div>
-      <strong>hlavní sport</strong>
-      <span>Klub ho podporuje na všech úrovních.</span>
-    </div>
-    <div class="club-stat-card">
-      <div class="club-stat-value">102 x 70</div>
-      <strong>hlavní hřiště</strong>
-      <span>Domácí plocha Stadionu Jaroslava Vintra.</span>
-    </div>
-    <div class="club-stat-card">
-      <div class="club-stat-value">90 x 60</div>
-      <strong>škvárové hřiště</strong>
-      <span>Součást sportovního areálu klubu.</span>
-    </div>
-  </section>
-
-  <section class="page-section" data-reveal>
-    <h2 class="page-section-title">Vedení klubu</h2>
-    <div class="people-grid">
-      <div class="person-card"><span class="person-role">Prezident klubu</span><span class="person-name">Martin Holas</span></div>
-      <div class="person-card"><span class="person-role">Sekretář klubu</span><span class="person-name">Milan Drahoš</span></div>
-      <div class="person-card"><span class="person-role">Hospodář klubu</span><span class="person-name">Martin Ježek</span></div>
-      <div class="person-card"><span class="person-role">Člen výkonného výboru</span><span class="person-name">David Portužák</span></div>
-      <div class="person-card"><span class="person-role">Člen výkonného výboru</span><span class="person-name">Jan Kopřiva</span></div>
-      <div class="person-card"><span class="person-role">Člen výkonného výboru</span><span class="person-name">Lukáš Křenek</span></div>
-      <div class="person-card"><span class="person-role">Člen výkonného výboru</span><span class="person-name">Ondřej Číž</span></div>
-    </div>
-  </section>
-
-  <section class="page-section" data-reveal>
-    <h2 class="page-section-title">Stanovy klubu</h2>
-    <div class="club-document">
+<main class="field-body">
+  <section class="field-status-grid" data-reveal aria-label="Rychlý stav obsazenosti">
+    <article class="field-status-card">
+      <span class="field-status-label">Teď</span>
       <div>
-        <h3>Pravidla fungování klubu</h3>
-        <p>Aktualizované stanovy SK Baník Libušín, které obsahují všechny informace o pravidlech a fungování klubu, jsou k dispozici pro stažení.</p>
+        <strong class="field-status-value" id="fieldNowValue">-</strong>
+        <p class="field-status-note" id="fieldNowNote">Načítám demo...</p>
       </div>
-      <a class="btn" href="https://skbaniklibusin.cz/wp-content/uploads/2024/04/Stanovy-SK-Banik-Libusin-z.s.2015.pdf" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M5 21h14"></path></svg>
-        Stáhnout stanovy
-      </a>
+    </article>
+    <article class="field-status-card">
+      <span class="field-status-label">Volná kapacita</span>
+      <div>
+        <strong class="field-status-value" id="fieldFreeValue">-</strong>
+        <p class="field-status-note" id="fieldFreeNote">Ve vybraný den.</p>
+      </div>
+    </article>
+    <article class="field-status-card">
+      <span class="field-status-label">Prostor</span>
+      <div>
+        <strong class="field-status-value" id="fieldFacilityValue">Hřiště</strong>
+        <p class="field-status-note">Celé hřiště, poloviny i klubovna.</p>
+      </div>
+    </article>
+    <article class="field-status-card">
+      <span class="field-status-label">Datum</span>
+      <div>
+        <strong class="field-status-value" id="fieldSelectedValue">-</strong>
+        <p class="field-status-note" id="fieldSelectedNote">Vybraný den.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="field-panel" data-reveal>
+    <div class="field-panel-head">
+      <div>
+        <h2 class="field-panel-title">Týdenní <span class="accent">přehled</span></h2>
+        <p class="field-panel-copy">Klepni na den a hned uvidíš, kdy je hřiště obsazené. Na mobilu se detail automaticky změní na přehledné karty.</p>
+      </div>
+      <span class="field-source-pill">Demo data</span>
+    </div>
+
+    <div class="field-toolbar">
+      <div class="field-segmented" aria-label="Přepnout prostor">
+        <button type="button" data-field-facility="field">Hřiště</button>
+        <button type="button" data-field-facility="clubhouse">Klubovna</button>
+      </div>
+      <button type="button" class="field-jump" id="fieldToday">Dnes</button>
+    </div>
+
+    <div class="field-days" id="fieldDays" aria-label="Dny v týdnu"></div>
+
+    <div class="field-detail">
+      <div class="field-detail-head">
+        <h2 class="field-detail-title" id="fieldDetailTitle">Vybraný den</h2>
+        <span class="field-detail-summary" id="fieldDetailSummary">Načítám...</span>
+      </div>
+
+      <div class="field-timeline" aria-label="Časová osa obsazenosti">
+        <div class="field-hours" id="fieldHours"></div>
+        <div class="field-lanes" id="fieldLanes"></div>
+      </div>
+
+      <div class="field-mobile-list" id="fieldMobileList" aria-label="Mobilní seznam obsazenosti"></div>
+
+      <div class="field-legend" aria-label="Legenda">
+        <span><i style="background:rgba(220,38,38,.72)"></i>Klubový trénink / zápas</span>
+        <span><i style="background:rgba(5,150,105,.72)"></i>Pronájem</span>
+        <span><i style="background:rgba(29,29,31,.72)"></i>Klubovna</span>
+        <span><i style="background:#facc15"></i>Po setmění světla</span>
+      </div>
     </div>
   </section>
 
-  <section class="page-section" data-reveal>
-    <h2 class="page-section-title">Stadion Jaroslava Vintra</h2>
-    <div class="club-stadium-grid">
-      <div class="club-stadium-copy">
-        <span class="club-eyebrow">Domov Baníku</span>
-        <h2>Srdce klubu v <span class="accent">Libušíně</span></h2>
-        <p>Hlavní hřiště má rozměry 102 x 70 m a součástí areálu je i škvárové hřiště o velikosti 90 x 60 m. Nově vybudované dětské hřiště zpříjemní návštěvu rodinám s dětmi. Pro všechny generace je k dispozici občerstvení, jehož provozní doba odpovídá tréninkům a zápasům.</p>
-        <p>Stadion, pojmenovaný na počest Jaroslava Vintra, vynikajícího libušínského sportovce, který byl vězněn v Terezíně a v roce 1944 popraven v Drážďanech, se stal symbolem obnovy a pokroku našeho klubu. Stadion Jaroslava Vintra dnes stojí jako hrdý symbol našeho klubu. S moderními zařízeními a vynikajícími podmínkami pro hráče i fanoušky, je stadion nejen místem sportovních výkonů, ale i srdcem komunity, které spojuje láska k fotbalu a hrdost na naše město Libušín.</p>
-      </div>
-      <div class="club-fact-list">
-        <div class="club-fact-card">
-          <span class="club-fact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="M4 9h16M4 15h16M9 4v16M15 4v16"></path></svg></span>
-          <div><strong>Sportovní zázemí</strong><span>Hlavní hřiště má rozměry 102 x 70 m.</span></div>
-        </div>
-        <div class="club-fact-card">
-          <span class="club-fact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"></path><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"></path><path d="M6 1v3M10 1v3M14 1v3"></path></svg></span>
-          <div><strong>Občerstvení</strong><span>Provozní doba odpovídá tréninkům a zápasům.</span></div>
-        </div>
-        <div class="club-fact-card">
-          <span class="club-fact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-4.6 7-11a7 7 0 10-14 0c0 6.4 7 11 7 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg></span>
-          <div><strong>Dětské hřiště</strong><span>Zpříjemní návštěvu rodinám s dětmi.</span></div>
-        </div>
+  <section class="field-request-grid" id="rezervace" data-reveal>
+    <div class="field-request-panel">
+      <h2 class="field-request-title">Jak to bude <span class="accent">fungovat</span></h2>
+      <p>Tahle verze je zatím jen ukázka. Až budeme mít hotové napojení, obsazenost se bude brát ze skutečného zdroje a žádosti o rezervaci půjdou správci.</p>
+      <div class="field-note-list">
+        <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Počítáme s celým hřištěm, polovinou A, polovinou B a klubovnou.</span>
+        <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Na mobilu je hlavní výpis jako seznam, ne drobná tabulka.</span>
+        <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Demo formulář teď nic neposílá ven, jen ukáže budoucí tok žádosti.</span>
       </div>
     </div>
 
-    <div class="club-photo-strip">
-      <figure class="photo">
-        <img src="https://skbaniklibusin.cz/wp-content/uploads/2024/04/hriste-stare.png" alt="Historická fotka stadionu" loading="lazy">
-        <figcaption>Slavnostní otevření stadionu · 11. 6. 1977</figcaption>
-      </figure>
-      <figure class="photo">
-        <img src="https://skbaniklibusin.cz/wp-content/uploads/2024/04/hriste-dron.png" alt="Aktuální letecká fotka stadionu" loading="lazy">
-        <figcaption>Stadion v roce 2023 · 11. 3. 2023</figcaption>
-      </figure>
+    <div class="field-request-panel">
+      <h2 class="field-request-title">Demo <span class="accent">žádost</span></h2>
+      <form class="field-form" id="fieldDemoForm">
+        <label class="full"><span>Jméno / tým</span><input id="requestName" type="text" placeholder="Jan Novák"></label>
+        <label><span>Datum</span><input id="requestDate" type="date"></label>
+        <label><span>Prostor</span><select id="requestPlace"><option>Celé hřiště</option><option>Polovina A</option><option>Polovina B</option><option>Klubovna</option></select></label>
+        <label><span>Od</span><select id="requestFrom"><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option></select></label>
+        <label><span>Do</span><select id="requestTo"><option>17:30</option><option>18:30</option><option>19:30</option><option>20:30</option><option>21:00</option></select></label>
+        <button class="field-submit" type="submit">Vyzkoušet demo žádost</button>
+      </form>
+      <div class="field-pending" id="fieldPending" hidden></div>
     </div>
   </section>
-
 </main>
 
 <!-- ============ FOOTER ============ -->
@@ -238,5 +240,6 @@
 </footer>
 
 <script src="page.js"></script>
+<script src="hriste.js?v=1"></script>
 </body>
 </html>
