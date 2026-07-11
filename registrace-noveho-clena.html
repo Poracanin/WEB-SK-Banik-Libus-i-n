@@ -1,403 +1,250 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrace Nového Člena - SK Baník Libušín</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --brand-red-new: #DC2626; /* R220 G38 B38 (Tailwind red-600) */
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb; /* Světlejší pozadí pro lepší kontrast karet */
-            color: #1F2937;
-        }
-
-        .font-heading { font-family: 'Oswald', sans-serif; }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        /* Mobilní menu - Styly z předchozí verze */
-        #mobile-menu-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            z-index: 100; display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s ease-in-out; pointer-events: none;
-        }
-        #mobile-menu-overlay.active { opacity: 1; pointer-events: auto; }
-        #mobile-menu-content {
-            background-color: rgba(255, 255, 255, 0.8); padding: 1.5rem;
-            border-radius: 1rem; width: 90%; max-width: 350px;
-            text-align: left; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        #mobile-menu-close {
-             position: absolute; top: 0.5rem; right: 0.5rem; color: #4B5563;
-             padding: 0.5rem; background-color: rgba(0, 0, 0, 0.05); border-radius: 50%; cursor: pointer;
-         }
-        .mobile-menu-item-wrapper { position: relative; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
-        .mobile-menu-item-wrapper:last-child { border-bottom: none; }
-        .mobile-menu-main-item { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .submenu-toggle-arrow { padding: 0.75rem 0.5rem; color: #6B7280; transition: transform 0.3s ease; flex-shrink: 0; }
-        .submenu-toggle-arrow.open { transform: rotate(180deg); }
-        #mobile-menu-links > div > .mobile-menu-main-item > a {
-             display: block; padding: 0.75rem 0.5rem; font-family: 'Inter', sans-serif; font-size: 1rem;
-             font-weight: 600; color: #1F2937; transition: color 0.2s; flex-grow: 1; margin-right: 0.5rem;
-         }
-         #mobile-menu-links > div > .mobile-menu-main-item > a:hover { color: var(--brand-red-new); }
-         #mobile-menu-links .mobile-submenu {
-             max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-             padding-left: 1.5rem; background-color: rgba(0,0,0,0.03);
-         }
-         #mobile-menu-links .mobile-submenu.open { max-height: 500px; padding-top: 0.25rem; padding-bottom: 0.5rem; }
-         #mobile-menu-links .mobile-submenu a {
-             font-size: 0.9rem; padding: 0.4rem 0.5rem; font-family: 'Inter', sans-serif; font-weight: 500;
-             color: #374151; display: block; transition: color 0.2s;
-         }
-         #mobile-menu-links .mobile-submenu a:hover { color: var(--brand-red-new); }
-         #mobile-menu-button { background: none !important; border: none !important; box-shadow: none !important; outline: none !important; }
-
-        /* Styly pro kroky registrace - NOVÝ VZHLED KARET */
-        .registration-steps .step-card {
-            background-color: #ffffff; /* Bílé pozadí karty */
-            border-radius: 0.5rem; /* rounded-lg */
-            padding: 1.5rem; /* p-6 */
-            margin-bottom: 1.5rem; /* mb-6 */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-            border-left: 4px solid var(--brand-red-new); /* Červený okraj vlevo */
-            position: relative;
-        }
-
-         .registration-steps .step-card strong {
-             font-weight: 600;
-             display: block;
-             margin-bottom: 0.5rem; /* mb-2 */
-             color: #111827; /* Zvýraznění nadpisu kroku */
-             font-size: 1.125rem; /* text-lg */
-         }
-          .registration-steps .step-card ul {
-              list-style: disc;
-              padding-left: 1.5rem; /* pl-6 */
-              margin-top: 0.5rem; /* mt-2 */
-              color: #4b5563; /* text-gray-600 */
-              font-size: 0.9rem;
-          }
-           .registration-steps .step-card code {
-               background-color: #e5e7eb; /* bg-gray-200 */
-               padding: 0.1rem 0.4rem;
-               border-radius: 0.25rem; /* rounded */
-               font-family: monospace;
-               font-weight: bold;
-               color: #1f2937; /* Tmavší text pro kód */
-           }
-           .registration-steps .step-card a {
-               color: var(--brand-red-new);
-               font-weight: 500;
-           }
-            .registration-steps .step-card a:hover {
-               text-decoration: underline;
-           }
-        /* Odstraněno původní číslování */
-        .registration-steps ol { list-style: none; padding-left: 0; }
-        .registration-steps li::before { content: none; }
-        .registration-steps li { padding-left: 0; margin-bottom: 0; } /* Reset původních stylů li */
-
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registrace nového člena | SK Baník Libušín</title>
+<link rel="icon" href="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="homepage.css">
+<link rel="stylesheet" href="page.css">
 </head>
+<body class="subpage" style="--page-hero-image: url('https://skbaniklibusin.cz/wp-content/uploads/2025/10/MG_5491-scaled.jpg'); --page-hero-position: center 30%;">
 
-<body>
-
-<header class="text-white text-xs py-2 sticky top-0 z-50" style="background-color: var(--brand-red-new)">
-    <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
-        <!-- Kontakty vlevo -->
-        <div class="flex items-center space-x-4 flex-grow md:flex-grow-0 mb-1 md:mb-0">
-            <a href="https://www.google.com/maps/search/?api=1&query=Stadion+J.+Vintra,+Libu%C5%A1%C3%ADn" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1 text-white hover:text-gray-200 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg>
-                <span class="truncate max-w-[200px] sm:max-w-none">M.Pávla 726, Stadion J.Vintra, Libušín</span>
-            </a>
-        </div>
-        <!-- Sociální sítě vpravo -->
-        <div class="flex items-center space-x-3">
-             <a href="https://www.instagram.com/skbaniklibusin/?igsh=ZDUydGdlNWdjZjI2#" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-200 transition-colors flex items-center space-x-1">
-                 <img src="https://dekorartprague.cz/wp-content/uploads/2025/10/2.png" alt="Instagram" class="h-4 w-4">
-                 <span class="hidden md:inline">Instagram</span>
-             </a>
-             <a href="https://www.facebook.com/people/SK-Ban%C3%ADk-Libu%C5%A1%C3%ADn/61551993864059/?mibextid=wwXIfr&rdid=OuJ4SbXqbjyEvXNO&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1YDexdTCS7%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-200 transition-colors flex items-center space-x-1">
-                 <img src="https://dekorartprague.cz/wp-content/uploads/2025/10/1.png" alt="Facebook" class="h-4 w-4">
-                 <span class="hidden md:inline">Facebook</span>
-             </a>
-        </div>
+<!-- ============ NAV ============ -->
+<div class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-social">
+      <a href="https://www.facebook.com/people/SK-Ban%C3%ADk-Libu%C5%A1%C3%ADn/61551993864059/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"></path></svg>
+      </a>
+      <a href="https://www.instagram.com/skbaniklibusin/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"></circle></svg>
+      </a>
     </div>
-</header>
-
-<nav class="glass-effect sticky top-7 z-50 shadow-lg border-b border-white/20 bg-white/80">
-    <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center py-3">
-            <a href="https://skbaniklibusin.cz/" class="flex items-center space-x-3">
-                <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="Logo SK Baník Libušín" class="h-12 w-12 object-contain">
-                <span class="font-heading text-xl font-bold text-gray-700 tracking-tight uppercase">
-                    SK Baník <span class="text-[var(--brand-red-new)]">Libušín</span>
-                </span>
-            </a>
-            <!-- Desktop Menu - Načte se dynamicky -->
-            <div id="desktop-menu-container" class="hidden md:flex items-center space-x-2">
-                <span class="text-gray-500 text-xs px-3">Načítám menu...</span>
-            </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-700 hover:text-[var(--brand-red-new)] p-1 rounded-md focus:outline-none focus:ring-0">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-                </button>
-            </div>
-        </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Domů</a>
+      <a href="klub.html">Klub</a>
+      <a href="a-tym.html">A-Tým</a>
+      <a href="b-tym.html">B-Tým</a>
+      <a href="dorost.html">Dorost</a>
+      <a href="hymna.html">Hymna</a>
+      <a href="#">Dokumenty</a>
+      <a href="kontakty.html">Kontakty</a>
     </div>
-</nav>
-
-<main class="pt-10 pb-16">
-    <div class="container mx-auto px-4">
-
-        <h1 class="font-heading text-4xl md:text-5xl font-bold text-center mb-12">
-            Registrace <span class="text-[var(--brand-red-new)]">Nového Člena</span>
-        </h1>
-
-        <div class="max-w-3xl mx-auto space-y-8 text-gray-700 leading-relaxed registration-steps">
-            <p class="mb-8 text-lg">
-                Registrace nového člena je jednoduchá. Postupujte podle následujících kroků:
-            </p>
-
-            <!-- Změna: Odstraněn <ol>, každý <li> nahrazen <div> s class="step-card" -->
-            <div class="step-card">
-                <strong>1. Otevřete formulář FAČR:</strong>
-                Klikněte na tento odkaz: <a href="https://registr.fotbal.cz/" target="_blank" rel="noopener noreferrer" class="font-semibold">Registrace člena FAČR</a>.
-            </div>
-            <div class="step-card">
-                <strong>2. Základní údaje o dítěti:</strong>
-                Vyplňte pečlivě následující informace:
-                <ul>
-                    <li>Příjmení a Jméno</li>
-                    <li>Datum narození</li>
-                    <li>Národnost</li>
-                </ul>
-            </div>
-            <div class="step-card">
-                 <strong>3. Osobní a kontaktní údaje:</strong>
-                 Doplňte další požadované informace jako:
-                 <ul>
-                    <li>Rodné číslo</li>
-                    <li>Místo a stát narození</li>
-                    <li>Pohlaví</li>
-                    <li>Adresa trvalého pobytu</li>
-                    <li>Preferovaný jazyk</li>
-                    <li>Vaše kontaktní údaje (email, telefon)</li>
-                 </ul>
-            </div>
-             <div class="step-card">
-                 <strong>4. Výběr role: Hráč</strong>
-                 Ve formuláři najděte a zaškrtněte možnost <strong class="inline">„Chci se stát hráčem“</strong>.
-             </div>
-             <div class="step-card">
-                 <strong>5. Přihlášení přes klub:</strong>
-                 Zaškrtněte kolonku <strong class="inline">„Chci se stát členem prostřednictvím klubu“</strong>.
-             </div>
-             <div class="step-card">
-                 <strong>6. Vyhledání klubu:</strong>
-                 Do pole pro číslo klubu zadejte <code>2030311</code>. Po chvíli by se měl automaticky objevit název našeho klubu.
-             </div>
-             <div class="step-card">
-                 <strong>7. Kontrola názvu klubu:</strong>
-                 Ujistěte se, že je správně vybrán klub <strong class="inline">SK BANÍK LIBUŠÍN, z.s.</strong>
-             </div>
-             <div class="step-card">
-                 <strong>8. Souhlas s podmínkami:</strong>
-                 Přečtěte si a zaškrtněte souhlas s podmínkami členství FAČR.
-             </div>
-             <div class="step-card">
-                 <strong>9. Odeslání a tisk:</strong>
-                 Klikněte na tlačítko pro odeslání žádosti. Po úspěšném odeslání si formulář můžete vytisknout pro vaši evidenci (není nutné ho nosit do klubu).
-             </div>
-             <div class="step-card">
-                 <strong>10. Potvrzení e-mailu:</strong>
-                 Na vaši emailovou adresu přijde zpráva od FAČR. <strong>Je důležité kliknout na ověřovací odkaz v tomto emailu</strong>, aby byla registrace dokončena.
-             </div>
-            <!-- Konec změny -->
-
-             <div class="border-t border-gray-200 pt-8 space-y-6">
-                 <h2 class="font-heading text-2xl font-semibold text-gray-800">Co dál?</h2>
-                 <div>
-                     <h3 class="font-semibold text-lg text-gray-800 mb-2">Členské příspěvky FAČR:</h3>
-                     <p>Poplatky za členství ve FAČR není třeba platit individuálně. Klub zajišťuje platby hromadně a částku si od rodičů vybere společně s klubovými příspěvky.</p>
-                 </div>
-                 <div>
-                     <h3 class="font-semibold text-lg text-gray-800 mb-2">Fotografie dítěte:</h3>
-                     <p>Po úspěšné online registraci prosím pořiďte portrétní fotografii dítěte (stačí mobilem - může rodič nebo trenér) a zašlete ji příslušnému trenérovi, ideálně přes WhatsApp.</p>
-                 </div>
-                 <div>
-                     <h3 class="font-semibold text-lg text-gray-800 mb-2">Papírová přihláška:</h3>
-                     <p>Preferujeme online registraci. Papírovou přihlášku použijte pouze ve výjimečných případech po domluvě s trenérem nebo vedením klubu, protože vyžaduje manuální přepis údajů.</p>
-                 </div>
-                 <div class="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg">
-                     <h3 class="font-semibold text-lg mb-2">Kontakt pro dotazy</h3>
-                     <p>V případě jakýchkoli nejasností ohledně registrace nebo fungování mládeže kontaktujte:</p>
-                     <p class="mt-2"><strong>Martin Ježek:</strong> <a href="tel:+420737268088" class="text-blue-600 hover:underline">737 268 088</a></p>
-                 </div>
-            </div>
-
-        </div>
-
-    </div>
-</main>
-
-<!-- Mobilní menu -->
-<div id="mobile-menu-overlay" class="">
-    <div id="mobile-menu-content">
-        <button id="mobile-menu-close" class="">
-            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-        <div id="mobile-menu-links">
-             <span class="text-gray-500 text-base">Načítám menu...</span>
-        </div>
-    </div>
+    <button type="button" class="nav-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="navModal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+  </div>
 </div>
 
-<script>
-    // --- Rekurzivní funkce pro menu DOM ---
-    function buildMenuDOM(container, items, isMobile = false) { /* ... kód pro menu ... */
-        if (!items || items.length === 0) {
-            if (container) container.innerHTML = ''; 
-            return;
-        }
+<!-- ============ MOBILNÍ MENU ============ -->
+<div class="nav-modal" id="navModal" aria-hidden="true">
+  <div class="nav-modal-backdrop" id="navModalBackdrop"></div>
+  <div class="nav-modal-panel" role="dialog" aria-modal="true" aria-label="Hlavní menu">
+    <div class="nav-modal-head">
+      <div class="nav-modal-brand">
+        <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="" class="nav-modal-logo">
+        <span class="nav-modal-title">SK Baník <span class="accent">Libušín</span></span>
+      </div>
+      <button type="button" class="nav-modal-close" id="navModalClose" aria-label="Zavřít menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+    <nav class="nav-modal-links">
+      <a href="index.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5"></path><path d="M6 9.5V20h12V9.5"></path></svg></span>
+        <span class="ni-label">Domů</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="klub.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"></path></svg></span>
+        <span class="ni-label">Klub</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="a-tym.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8l3.2 2.3-1.2 3.7h-4L8.8 10.3z"></path></svg></span>
+        <span class="ni-label">A-Tým</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="b-tym.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8l3.2 2.3-1.2 3.7h-4L8.8 10.3z"></path></svg></span>
+        <span class="ni-label">B-Tým</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="dorost.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8l3.2 2.3-1.2 3.7h-4L8.8 10.3z"></path></svg></span>
+        <span class="ni-label">Dorost</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="hymna.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l10-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="16" cy="16" r="3"></circle></svg></span>
+        <span class="ni-label">Hymna</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="#">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6M9 17h4"></path></svg></span>
+        <span class="ni-label">Dokumenty</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="kontakty.html">
+        <span class="ni-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
+        <span class="ni-label">Kontakty</span>
+        <svg class="ni-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+      </a>
+    </nav>
+    <div class="nav-modal-social">
+      <a href="https://www.instagram.com/skbaniklibusin/" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"></circle></svg>
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.facebook.com/people/SK-Ban%C3%ADk-Libu%C5%A1%C3%ADn/61551993864059/" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"></path></svg>
+        <span>Facebook</span>
+      </a>
+    </div>
+  </div>
+</div>
 
-        items.forEach(item => {
-            const hasChildren = item.children && item.children.length > 0;
-            const menuItemWrapper = document.createElement('div'); 
+<!-- ============ HERO ============ -->
+<header class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-wash"></div>
+  <div class="page-hero-inner" data-reveal>
+    <span class="page-kicker">Přidej se k nám</span>
+    <h1>Registrace nového člena</h1>
+    <p class="page-hero-sub">Registrace je jednoduchá a zvládnete ji online za pár minut. Stačí projít následujících deset kroků.</p>
+  </div>
+</header>
 
-            const link = document.createElement('a');
-            link.href = item.url || '#';
-            link.textContent = item.title;
+<main class="page-body narrow">
 
-            if (isMobile) {
-                // --- Mobilní menu ---
-                menuItemWrapper.className = 'mobile-menu-item-wrapper';
-                const mainItemContainer = document.createElement('div');
-                mainItemContainer.className = 'mobile-menu-main-item';
-                mainItemContainer.appendChild(link); 
+  <section class="page-section" data-reveal>
+    <h2 class="page-section-title">Postup krok za krokem</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <strong>Otevřete formulář FAČR</strong>
+          <p>Klikněte na tento odkaz: <a href="https://registr.fotbal.cz/" target="_blank" rel="noopener" style="color:var(--red);font-weight:700;">Registrace člena FAČR</a>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <strong>Základní údaje o dítěti</strong>
+          <p>Vyplňte pečlivě následující informace:</p>
+          <ul><li>příjmení a jméno,</li><li>datum narození,</li><li>národnost.</li></ul>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <div class="step-body">
+          <strong>Osobní a kontaktní údaje</strong>
+          <p>Doplňte další požadované informace:</p>
+          <ul><li>rodné číslo,</li><li>místo a stát narození,</li><li>pohlaví,</li><li>adresu trvalého pobytu,</li><li>preferovaný jazyk,</li><li>vaše kontaktní údaje (e-mail, telefon).</li></ul>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">4</span>
+        <div class="step-body">
+          <strong>Výběr role: Hráč</strong>
+          <p>Ve formuláři najděte a zaškrtněte možnost <strong class="inline">„Chci se stát hráčem“</strong>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">5</span>
+        <div class="step-body">
+          <strong>Přihlášení přes klub</strong>
+          <p>Zaškrtněte kolonku <strong class="inline">„Chci se stát členem prostřednictvím klubu“</strong>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">6</span>
+        <div class="step-body">
+          <strong>Vyhledání klubu</strong>
+          <p>Do pole pro číslo klubu zadejte <code>2030311</code>. Po chvíli by se měl automaticky objevit název našeho klubu.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">7</span>
+        <div class="step-body">
+          <strong>Kontrola názvu klubu</strong>
+          <p>Ujistěte se, že je správně vybrán klub <strong class="inline">SK BANÍK LIBUŠÍN, z.s.</strong></p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">8</span>
+        <div class="step-body">
+          <strong>Souhlas s podmínkami</strong>
+          <p>Přečtěte si a zaškrtněte souhlas s podmínkami členství FAČR.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">9</span>
+        <div class="step-body">
+          <strong>Odeslání a tisk</strong>
+          <p>Klikněte na tlačítko pro odeslání žádosti. Po úspěšném odeslání si formulář můžete vytisknout pro vaši evidenci (není nutné ho nosit do klubu).</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">10</span>
+        <div class="step-body">
+          <strong>Potvrzení e-mailu</strong>
+          <p>Na vaši e-mailovou adresu přijde zpráva od FAČR. <strong class="inline">Je důležité kliknout na ověřovací odkaz v tomto e-mailu</strong>, aby byla registrace dokončena.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                if (hasChildren) {
-                    const arrow = document.createElement('span');
-                    arrow.className = 'submenu-toggle-arrow';
-                    arrow.innerHTML = '▼';
-                    mainItemContainer.appendChild(arrow); 
+  <section class="page-section" data-reveal>
+    <h2 class="page-section-title">Co dál?</h2>
+    <div class="card">
+      <div class="info-block" style="margin-top:0;">
+        <h3>Členské příspěvky FAČR</h3>
+        <p>Poplatky za členství ve FAČR není třeba platit individuálně. Klub zajišťuje platby hromadně a částku si od rodičů vybere společně s klubovými příspěvky.</p>
+      </div>
+      <div class="info-block">
+        <h3>Fotografie dítěte</h3>
+        <p>Po úspěšné online registraci prosím pořiďte portrétní fotografii dítěte (stačí mobilem — může rodič nebo trenér) a zašlete ji příslušnému trenérovi, ideálně přes WhatsApp.</p>
+      </div>
+      <div class="info-block">
+        <h3>Papírová přihláška</h3>
+        <p>Preferujeme online registraci. Papírovou přihlášku použijte pouze ve výjimečných případech po domluvě s trenérem nebo vedením klubu, protože vyžaduje manuální přepis údajů.</p>
+      </div>
+    </div>
 
-                    mainItemContainer.onclick = (e) => {
-                        e.stopPropagation(); 
-                        const subMenu = menuItemWrapper.querySelector('.mobile-submenu');
-                        const arrowEl = mainItemContainer.querySelector('.submenu-toggle-arrow');
-                        if (subMenu && arrowEl) {
-                            subMenu.classList.toggle('open');
-                            arrowEl.classList.toggle('open');
-                        }
-                    };
-                    
-                    link.onclick = (e) => { if (hasChildren) e.preventDefault(); };
+    <div class="callout accent" style="margin-top:16px;">
+      <h3>Kontakt pro dotazy</h3>
+      <p>V případě jakýchkoli nejasností ohledně registrace nebo fungování mládeže kontaktujte:</p>
+      <p><strong>Martin Ježek:</strong> <a href="tel:+420737268088">737 268 088</a></p>
+    </div>
+  </section>
 
-                    const subContainer = document.createElement('div');
-                    subContainer.className = 'mobile-submenu';
-                    buildMenuDOM(subContainer, item.children, true);
-                    menuItemWrapper.appendChild(mainItemContainer); 
-                    menuItemWrapper.appendChild(subContainer); 
-                } else {
-                     menuItemWrapper.appendChild(mainItemContainer);
-                }
-                container.appendChild(menuItemWrapper); 
+</main>
 
-            } else {
-                // --- Desktop menu ---
-                menuItemWrapper.className = 'relative group';
-                link.className = 'text-gray-600 font-semibold hover:text-[var(--brand-red-new)] px-3 py-2 text-sm'; 
-                menuItemWrapper.appendChild(link);
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="" class="footer-logo">
+      <div>
+        <div class="footer-name">SK Baník <span class="accent-light">Libušín</span></div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Stadion+J.+Vintra,+Libu%C5%A1%C3%ADn" target="_blank" rel="noopener" class="footer-address">M. Pávla 726, Stadion J. Vintra, Libušín</a>
+      </div>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/skbaniklibusin/" target="_blank" rel="noopener" class="footer-social-btn">Instagram</a>
+      <a href="https://www.facebook.com/people/SK-Ban%C3%ADk-Libu%C5%A1%C3%ADn/61551993864059/" target="_blank" rel="noopener" class="footer-social-btn">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="currentYear"></span> SK Baník Libušín. Všechna práva vyhrazena.</span>
+    <a href="ochrana-osobni-udaju.html">Ochrana osobních údajů</a>
+    <span>Web vytvořil Faris Poračanin</span>
+  </div>
+</footer>
 
-                if (hasChildren) {
-                    const subMenu = document.createElement('div');
-                    subMenu.className = 'absolute top-full left-0 bg-white shadow-lg rounded-md mt-1 py-1 min-w-[200px] z-20 hidden group-hover:block';
-                    buildMenuDOM(subMenu, item.children, false);
-                    menuItemWrapper.appendChild(subMenu);
-                    subMenu.querySelectorAll('a').forEach(subLink => {
-                        subLink.className = 'block text-gray-700 hover:text-[var(--brand-red-new)] px-4 py-2 text-sm';
-                    });
-                }
-                container.appendChild(menuItemWrapper);
-            }
-        });
-     }
-
-    // --- Funkce pro načtení menu ---
-    async function fetchMenu() { /* ... kód pro načtení menu ... */
-        const menuApiUrl = 'https://skbaniklibusin.cz/wp-json/mojemenu/v1/moje-menu'; 
-        const desktopMenuContainer = document.getElementById('desktop-menu-container');
-        const mobileMenuLinksContainer = document.getElementById('mobile-menu-links');
-
-        if (desktopMenuContainer) desktopMenuContainer.innerHTML = `<span class="text-gray-500 text-xs px-3">Načítám menu...</span>`;
-        if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = `<span class="text-gray-500 text-base">Načítám menu...</span>`;
-
-        try {
-            const response = await fetch(menuApiUrl);
-            if (!response.ok) {
-                 const errorData = await response.json();
-                 throw new Error(errorData.message || `Chyba ${response.status}: ${response.statusText}`);
-            }
-            const menuItems = await response.json();
-
-            if (menuItems && menuItems.length > 0) {
-                 if (desktopMenuContainer) desktopMenuContainer.innerHTML = '';
-                 if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = '';
-                buildMenuDOM(desktopMenuContainer, menuItems, false); // Desktop
-                buildMenuDOM(mobileMenuLinksContainer, menuItems, true);  // Mobile
-            } else {
-                throw new Error("API vrátilo prázdné menu.");
-            }
-        } catch (error) {
-            console.error('Nepodařilo se načíst menu dynamicky:', error); 
-            const errorMessage = `<span class="text-red-600 text-xs px-3">Chyba načtení menu</span>`;
-            const mobileErrorMessage = `<span class="text-red-600 text-base">Chyba načtení menu</span>`;
-             if (desktopMenuContainer) desktopMenuContainer.innerHTML = errorMessage;
-             if (mobileMenuLinksContainer) mobileMenuLinksContainer.innerHTML = mobileErrorMessage;
-        }
-     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        fetchMenu();
-
-        // Mobilní menu
-        const menuButton = document.getElementById('mobile-menu-button');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const closeButton = document.getElementById('mobile-menu-close');
-        
-        const openMenu = () => mobileMenuOverlay.classList.add('active');
-        const closeMenu = () => mobileMenuOverlay.classList.remove('active');
-
-        menuButton.addEventListener('click', openMenu);
-        closeButton.addEventListener('click', closeMenu);
-        mobileMenuOverlay.addEventListener('click', (event) => {
-            const linkClicked = event.target.tagName === 'A';
-            const hasSubmenu = event.target.closest('.mobile-menu-item-wrapper')?.querySelector('.submenu-toggle-arrow');
-            const clickedOnOverlay = event.target === mobileMenuOverlay;
-            if ((linkClicked && !hasSubmenu) || clickedOnOverlay) {
-                closeMenu();
-            }
-         });
-    });
-</script>
-
+<script src="page.js"></script>
 </body>
 </html>
-
