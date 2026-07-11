@@ -16,6 +16,21 @@ body.subpage {
   background: var(--surface);
 }
 
+@keyframes pagePhotoIn {
+  from { opacity: .12; transform: scale(1.08); }
+  to { opacity: .24; transform: scale(1.03); }
+}
+
+@keyframes pageContentIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pageItemIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ============ NAV (vždy světlá varianta) ============ */
 body.subpage .nav {
   background: rgba(245, 245, 247, .8);
@@ -53,9 +68,10 @@ body.subpage .nav-links a.active {
   background-image: var(--page-hero-image);
   background-size: cover;
   background-position: var(--page-hero-position, center);
-  opacity: .18;
-  transform: scale(1.04);
+  opacity: .24;
+  transform: scale(1.03);
   filter: saturate(1.02);
+  animation: pagePhotoIn 1.2s cubic-bezier(.16, 1, .3, 1) both;
 }
 .page-hero-wash {
   position: absolute;
@@ -73,6 +89,7 @@ body.subpage .nav-links a.active {
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: pageContentIn .72s cubic-bezier(.16, 1, .3, 1) both;
 }
 .page-kicker {
   display: inline-flex;
@@ -123,6 +140,10 @@ body.subpage .nav-links a.active {
 }
 .page-body.narrow {
   max-width: 860px;
+}
+
+.page-body.club-page {
+  max-width: 1120px;
 }
 
 .page-section {
@@ -223,6 +244,7 @@ body.subpage .nav-links a.active {
   border-radius: 18px;
   padding: 16px 18px;
   box-shadow: var(--shadow-soft);
+  animation: pageItemIn .5s cubic-bezier(.16, 1, .3, 1) both;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .person-card:hover {
@@ -269,6 +291,212 @@ figure.photo figcaption {
   font-size: 13px;
   font-weight: 600;
   color: var(--ink-mute);
+}
+
+/* ============ KLUB — Apple rozvržení ============ */
+.club-intro {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(280px, .68fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.club-intro-copy,
+.club-document,
+.club-stadium-copy,
+.club-fact-card,
+.club-stat-card {
+  background: #ffffff;
+  border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.club-intro-copy {
+  border-radius: 24px;
+  padding: clamp(24px, 4vw, 42px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: pageItemIn .55s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.club-eyebrow {
+  margin-bottom: 14px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.club-intro-copy h2,
+.club-stadium-copy h2 {
+  margin: 0;
+  font-family: Oswald, sans-serif;
+  font-size: clamp(26px, 5vw, 44px);
+  line-height: 1.02;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  color: var(--ink);
+}
+
+.club-intro-copy p,
+.club-stadium-copy p,
+.club-document p {
+  margin: 16px 0 0;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.club-feature-photo {
+  margin: 0;
+  min-height: 100%;
+  animation: pageItemIn .55s cubic-bezier(.16, 1, .3, 1) .08s both;
+}
+
+.club-feature-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.club-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.club-stat-card {
+  border-radius: 20px;
+  padding: 20px;
+  min-height: 126px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: pageItemIn .5s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.club-stat-card:nth-child(2),
+.person-card:nth-child(2),
+.club-fact-card:nth-child(2) {
+  animation-delay: .05s;
+}
+
+.club-stat-card:nth-child(3),
+.person-card:nth-child(3),
+.club-fact-card:nth-child(3) {
+  animation-delay: .1s;
+}
+
+.club-stat-value {
+  font-family: Oswald, sans-serif;
+  font-size: clamp(30px, 5vw, 42px);
+  line-height: 1;
+  color: var(--red);
+}
+
+.club-stat-card strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+
+.club-stat-card span {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink-mute);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.club-document {
+  border-radius: 22px;
+  padding: clamp(22px, 3.6vw, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  animation: pageItemIn .5s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.club-document h3 {
+  margin: 0;
+  font-family: Oswald, sans-serif;
+  font-size: clamp(21px, 3vw, 28px);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.club-stadium-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .86fr) minmax(280px, .66fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.club-stadium-copy {
+  border-radius: 24px;
+  padding: clamp(24px, 4vw, 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: pageItemIn .5s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.club-fact-list {
+  display: grid;
+  gap: 12px;
+}
+
+.club-fact-card {
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  animation: pageItemIn .5s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.club-fact-icon {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 38, 38, .09);
+  color: var(--red);
+}
+
+.club-fact-card strong {
+  display: block;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+
+.club-fact-card span {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.club-photo-strip {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
 /* ============ HYMNA — přehrávač ============ */
@@ -731,6 +959,37 @@ figure.photo figcaption {
   .page-body {
     padding: 32px 16px 60px;
   }
+  .club-intro,
+  .club-stadium-grid,
+  .club-photo-strip {
+    grid-template-columns: 1fr;
+  }
+  .club-intro-copy,
+  .club-stadium-copy {
+    border-radius: 20px;
+  }
+  .club-feature-photo img {
+    min-height: 230px;
+    border-radius: 20px;
+  }
+  .club-stat-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .club-stat-card {
+    min-height: 104px;
+    border-radius: 18px;
+    padding: 18px;
+  }
+  .club-document {
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+  }
+  .club-document .btn {
+    width: 100%;
+    justify-content: center;
+  }
   .figure-grid img {
     height: 210px;
   }
@@ -746,5 +1005,19 @@ figure.photo figcaption {
   .footer-bottom {
     justify-content: center;
     text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero-bg,
+  .page-hero-inner,
+  .club-intro-copy,
+  .club-feature-photo,
+  .club-stat-card,
+  .club-document,
+  .club-stadium-copy,
+  .club-fact-card,
+  .person-card {
+    animation: none !important;
   }
 }

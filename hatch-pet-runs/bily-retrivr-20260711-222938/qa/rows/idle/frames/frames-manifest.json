@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "chroma_key": {
+    "hex": "#FF00FF",
+    "rgb": [
+      255,
+      0,
+      255
+    ],
+    "threshold": 96.0
+  },
+  "rows": [
+    {
+      "state": "idle",
+      "frames": [
+        "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/idle/frames/idle/00.png",
+        "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/idle/frames/idle/01.png",
+        "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/idle/frames/idle/02.png",
+        "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/idle/frames/idle/03.png",
+        "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/idle/frames/idle/04.png",
+        "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/idle/frames/idle/05.png"
+      ],
+      "method": "components"
+    }
+  ]
+}

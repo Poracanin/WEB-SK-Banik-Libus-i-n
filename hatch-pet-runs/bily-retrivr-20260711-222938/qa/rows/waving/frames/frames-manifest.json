@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "chroma_key": {
+    "hex": "#FF00FF",
+    "rgb": [
+      255,
+      0,
+      255
+    ],
+    "threshold": 96.0
+  },
+  "rows": [
+    {
+      "state": "waving",
+      "frames": [
+        "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/waving/frames/waving/00.png",
+        "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/waving/frames/waving/01.png",
+        "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/waving/frames/waving/02.png",
+        "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/waving/frames/waving/03.png"
+      ],
+      "method": "components"
+    }
+  ]
+}

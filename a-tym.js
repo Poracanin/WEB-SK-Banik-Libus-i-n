@@ -607,14 +607,14 @@
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
       burger.setAttribute("aria-expanded", "true");
-      document.body.classList.add("nav-lock");
+      document.body.classList.add("nav-lock", "nav-locked");
     }
 
     function closeModal() {
       modal.classList.remove("open");
       modal.setAttribute("aria-hidden", "true");
       burger.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("nav-lock");
+      document.body.classList.remove("nav-lock", "nav-locked");
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });

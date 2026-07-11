@@ -1,0 +1,142 @@
+{
+  "ok": true,
+  "frames_root": "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/running-left/frames",
+  "states": [
+    "running-left"
+  ],
+  "errors": [],
+  "warnings": [],
+  "rows": [
+    {
+      "state": "running-left",
+      "expected_frames": 8,
+      "actual_frames": 8,
+      "extraction_method": "components",
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "frames": [
+        {
+          "index": 0,
+          "file": "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/running-left/frames/running-left/00.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 20104,
+          "bbox": [
+            5,
+            21,
+            187,
+            187
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 534
+        },
+        {
+          "index": 1,
+          "file": "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/running-left/frames/running-left/01.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 16688,
+          "bbox": [
+            5,
+            33,
+            187,
+            175
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 460
+        },
+        {
+          "index": 2,
+          "file": "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/running-left/frames/running-left/02.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15602,
+          "bbox": [
+            5,
+            40,
+            187,
+            167
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 393
+        },
+        {
+          "index": 3,
+          "file": "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/running-left/frames/running-left/03.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 24381,
+          "bbox": [
+            5,
+            9,
+            187,
+            198
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 591
+        },
+        {
+          "index": 4,
+          "file": "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/running-left/frames/running-left/04.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 19526,
+          "bbox": [
+            5,
+            24,
+            187,
+            184
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 556
+        },
+        {
+          "index": 5,
+          "file": "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/running-left/frames/running-left/05.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 15404,
+          "bbox": [
+            5,
+            37,
+            187,
+            170
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 423
+        },
+        {
+          "index": 6,
+          "file": "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/running-left/frames/running-left/06.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 22842,
+          "bbox": [
+            5,
+            17,
+            187,
+            191
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 574
+        },
+        {
+          "index": 7,
+          "file": "/Users/farisporacanin/Desktop/SK Bani\u0301k Libus\u030ci\u0301n/WEB SK Banik Libus\u030ci\u0301n/hatch-pet-runs/bily-retrivr-20260711-222938/qa/rows/running-left/frames/running-left/07.png",
+          "width": 192,
+          "height": 208,
+          "nontransparent_pixels": 22478,
+          "bbox": [
+            5,
+            16,
+            187,
+            191
+          ],
+          "edge_pixels": 0,
+          "chroma_adjacent_pixels": 571
+        }
+      ]
+    }
+  ]
+}

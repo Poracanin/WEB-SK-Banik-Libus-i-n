@@ -1,5 +1,5 @@
 /* ============================================================
-   SK Baník Libušín — A tým (Apple styl)
+   SK Baník Libušín — týmové stránky (Apple styl)
    ============================================================ */
 
 :root {
@@ -15,8 +15,34 @@ body.team-page {
   background: var(--surface);
 }
 
-body.nav-lock {
+body.nav-lock,
+body.nav-locked {
   overflow: hidden;
+}
+
+@keyframes teamPhotoIn {
+  from { opacity: .28; transform: scale(1.08); }
+  to { opacity: .56; transform: scale(1.02); }
+}
+
+@keyframes teamContentIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes teamItemIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loadingSweep {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
+}
+
+@keyframes loadingPulse {
+  0%, 100% { opacity: .38; transform: scaleX(.72); }
+  50% { opacity: 1; transform: scaleX(1); }
 }
 
 body.team-page .nav {
@@ -57,9 +83,9 @@ body.team-page .nav-burger:hover {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 108px 20px 36px;
+  padding: 104px 20px 34px;
   color: var(--ink);
-  background: #ffffff;
+  background: #f5f5f7;
 }
 
 .team-hero-bg {
@@ -69,9 +95,10 @@ body.team-page .nav-burger:hover {
   background-image: var(--team-hero-image);
   background-size: cover;
   background-position: var(--team-hero-position, center);
-  opacity: .52;
+  opacity: .56;
   transform: scale(1.02);
   filter: saturate(1.08) contrast(1.03);
+  animation: teamPhotoIn 1.2s cubic-bezier(.16, 1, .3, 1) both;
 }
 
 .team-hero-wash {
@@ -88,22 +115,23 @@ body.team-page .nav-burger:hover {
   z-index: 2;
   width: min(1120px, 100%);
   display: grid;
-  grid-template-columns: minmax(0, .72fr) minmax(420px, 1fr);
+  grid-template-columns: minmax(0, .74fr) minmax(360px, .96fr);
   align-items: center;
-  gap: clamp(24px, 5vw, 60px);
+  gap: clamp(22px, 5vw, 54px);
 }
 
 .team-hero-copy {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  animation: teamContentIn .72s cubic-bezier(.16, 1, .3, 1) both;
 }
 
 .team-hero-logo {
-  width: 64px;
-  height: 64px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, .16));
 }
 
@@ -138,8 +166,8 @@ body.team-page .nav-burger:hover {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .03em;
-  font-size: clamp(46px, 8vw, 84px);
-  line-height: .92;
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: .95;
 }
 
 .team-hero-copy p {
@@ -151,12 +179,13 @@ body.team-page .nav-burger:hover {
 }
 
 .team-hero-match {
-  min-height: 268px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, .92);
+  min-height: 238px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .9);
   border: 1px solid rgba(0, 0, 0, .08);
-  box-shadow: 0 16px 44px rgba(0, 0, 0, .09);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .1);
   overflow: hidden;
+  animation: teamContentIn .72s cubic-bezier(.16, 1, .3, 1) .08s both;
 }
 
 .hero-match-top {
@@ -402,6 +431,23 @@ body.team-page .nav-burger:hover {
   text-align: center;
   color: var(--ink-mute);
   font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.team-loading::before {
+  content: "";
+  width: 58px;
+  height: 4px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(220, 38, 38, .18), rgba(220, 38, 38, .75), rgba(220, 38, 38, .18));
+  transform-origin: center;
+  animation: loadingPulse 1.15s ease-in-out infinite;
 }
 
 .team-loading.light {
@@ -409,6 +455,15 @@ body.team-page .nav-burger:hover {
   background: #ffffff;
   border: 1px solid var(--line-soft);
   border-radius: 20px;
+}
+
+.team-loading.light::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .78), transparent);
+  animation: loadingSweep 1.45s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .empty-state {
@@ -429,15 +484,16 @@ body.team-page .nav-burger:hover {
 
 .match-row {
   display: grid;
-  grid-template-columns: 90px minmax(0, 1fr) auto;
+  grid-template-columns: 82px minmax(0, 1fr) auto;
   align-items: center;
-  gap: 18px;
-  min-height: 116px;
-  padding: 16px 18px;
-  border-radius: 22px;
+  gap: 16px;
+  min-height: 104px;
+  padding: 14px 16px;
+  border-radius: 20px;
   background: #ffffff;
   border: 1px solid var(--line-soft);
   box-shadow: var(--shadow-soft);
+  animation: teamItemIn .5s cubic-bezier(.16, 1, .3, 1) both;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
@@ -447,10 +503,25 @@ body.team-page .nav-burger:hover {
   box-shadow: var(--shadow-lift);
 }
 
+.match-list .match-row:nth-child(2),
+.player-grid .player-card:nth-child(2) {
+  animation-delay: .04s;
+}
+
+.match-list .match-row:nth-child(3),
+.player-grid .player-card:nth-child(3) {
+  animation-delay: .08s;
+}
+
+.match-list .match-row:nth-child(4),
+.player-grid .player-card:nth-child(4) {
+  animation-delay: .12s;
+}
+
 .date-tile {
-  width: 82px;
-  min-height: 82px;
-  border-radius: 18px;
+  width: 72px;
+  min-height: 72px;
+  border-radius: 16px;
   background: #f5f5f7;
   border: 1px solid rgba(0, 0, 0, .05);
   display: flex;
@@ -463,7 +534,7 @@ body.team-page .nav-burger:hover {
 
 .date-tile strong {
   font-family: Oswald, sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1;
   color: var(--ink);
 }
@@ -503,8 +574,8 @@ body.team-page .nav-burger:hover {
 }
 
 .row-team img {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
   flex: none;
 }
@@ -650,6 +721,10 @@ body.team-page .nav-burger:hover {
   background: rgba(220, 38, 38, .055);
 }
 
+.standings-table-team tbody tr {
+  animation: teamItemIn .45s cubic-bezier(.16, 1, .3, 1) both;
+}
+
 .standings-table-team tbody tr.is-us td:first-child {
   color: var(--red);
   font-weight: 900;
@@ -687,8 +762,8 @@ body.team-page .nav-burger:hover {
 }
 
 .leader-card {
-  min-height: 140px;
-  border-radius: 22px;
+  min-height: 128px;
+  border-radius: 20px;
   background: #ffffff;
   border: 1px solid var(--line-soft);
   box-shadow: var(--shadow-soft);
@@ -697,6 +772,7 @@ body.team-page .nav-burger:hover {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
+  animation: teamItemIn .5s cubic-bezier(.16, 1, .3, 1) both;
 }
 
 .leader-copy {
@@ -759,8 +835,8 @@ body.team-page .nav-burger:hover {
 }
 
 .player-card {
-  min-height: 92px;
-  border-radius: 20px;
+  min-height: 86px;
+  border-radius: 18px;
   background: #ffffff;
   border: 1px solid var(--line-soft);
   box-shadow: var(--shadow-soft);
@@ -769,6 +845,7 @@ body.team-page .nav-burger:hover {
   align-items: center;
   justify-content: space-between;
   gap: 14px;
+  animation: teamItemIn .5s cubic-bezier(.16, 1, .3, 1) both;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
@@ -890,7 +967,7 @@ body.team-page .nav-burger:hover {
 
   .team-hero {
     min-height: auto;
-    padding: 84px 14px 20px;
+    padding: 82px 14px 20px;
   }
 
   .team-hero-logo {
@@ -906,7 +983,7 @@ body.team-page .nav-burger:hover {
   }
 
   .team-hero h1 {
-    font-size: 48px;
+    font-size: 42px;
     line-height: .92;
   }
 
@@ -988,6 +1065,7 @@ body.team-page .nav-burger:hover {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
     padding: 14px;
+    margin-top: -18px;
   }
 
   .overview-card {
@@ -1177,6 +1255,20 @@ body.team-page .nav-burger:hover {
 
   .standing-points {
     font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-hero-bg,
+  .team-hero-copy,
+  .team-hero-match,
+  .match-row,
+  .leader-card,
+  .player-card,
+  .standings-table-team tbody tr,
+  .team-loading::before,
+  .team-loading.light::after {
+    animation: none !important;
   }
 }
 
