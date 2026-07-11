@@ -59,17 +59,27 @@ body.team-page .nav-burger:hover {
   overflow: hidden;
   padding: 108px 20px 36px;
   color: var(--ink);
-  background: linear-gradient(to bottom, #ffffff 0%, #f6f6f8 58%, var(--surface) 100%);
+  background: #ffffff;
 }
 
 .team-hero-bg {
-  display: none;
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-image: var(--team-hero-image);
+  background-size: cover;
+  background-position: var(--team-hero-position, center);
+  opacity: .3;
+  transform: scale(1.02);
+  filter: saturate(1.02);
 }
 
 .team-hero-wash {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(220, 38, 38, .08), transparent 36%, rgba(0, 0, 0, .025));
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, .84) 0%, rgba(255, 255, 255, .72) 44%, rgba(245, 245, 247, .95) 100%),
+    linear-gradient(90deg, rgba(220, 38, 38, .12), transparent 38%, rgba(0, 0, 0, .03));
   pointer-events: none;
 }
 
