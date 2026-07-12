@@ -6,7 +6,7 @@
 <title>Ochrana osobních údajů | SK Baník Libušín</title>
 <link rel="icon" href="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="homepage.css">
+<link rel="stylesheet" href="homepage.css?v=3">
 <link rel="stylesheet" href="page.css">
 </head>
 <body class="subpage" style="--page-hero-image: url('https://skbaniklibusin.cz/wp-content/uploads/2025/10/MG_5491-scaled.jpg'); --page-hero-position: center 35%;">
@@ -14,14 +14,10 @@
 <!-- ============ NAV ============ -->
 <div class="nav" id="nav">
   <div class="nav-inner">
-    <div class="nav-social">
-      <a href="https://www.facebook.com/people/SK-Ban%C3%ADk-Libu%C5%A1%C3%ADn/61551993864059/" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"></path></svg>
-      </a>
-      <a href="https://www.instagram.com/skbaniklibusin/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"></circle></svg>
-      </a>
-    </div>
+    <a href="index.html" class="nav-brand" aria-label="Přejít na domovskou stránku SK Baník Libušín">
+      <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="" class="nav-brand-logo">
+      <span class="nav-brand-text">SK Baník <span>Libušín</span></span>
+    </a>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Domů</a>
       <a href="klub.html">Klub</a>
@@ -31,6 +27,14 @@
       <a href="hymna.html">Hymna</a>
       <a href="hriste.html">Hřiště</a>
       <a href="kontakty.html">Kontakty</a>
+    </div>
+    <div class="nav-social" aria-label="Sociální sítě">
+      <a href="https://www.instagram.com/skbaniklibusin/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"></circle></svg>
+      </a>
+      <a href="https://www.facebook.com/people/SK-Ban%C3%ADk-Libu%C5%A1%C3%ADn/61551993864059/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"></path></svg>
+      </a>
     </div>
     <button type="button" class="nav-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="navModal">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
@@ -205,6 +209,19 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
+  <section class="footer-partners" aria-labelledby="footerPartnersTitle">
+    <h2 class="footer-partners-title" id="footerPartnersTitle">Naši <span class="accent-light">partneři</span></h2>
+    <div class="footer-partners-grid">
+      <div class="footer-partner-logo"><img src="assets/partners/mesto-libusin.jpg" alt="Město Libušín" loading="lazy"></div>
+      <div class="footer-partner-logo"><img src="assets/partners/sol-substraty.jpg" alt="Sol substráty" loading="lazy"></div>
+      <div class="footer-partner-logo"><img src="assets/partners/helukabel.png" alt="HELUKABEL" loading="lazy"></div>
+      <div class="footer-partner-logo"><img src="assets/partners/facr.png" alt="FAČR" loading="lazy"></div>
+      <div class="footer-partner-logo"><img src="assets/partners/skfs.png" alt="Středočeský krajský fotbalový svaz" loading="lazy"></div>
+      <div class="footer-partner-logo"><img src="assets/partners/ofs-kladno.png" alt="OFS Kladno" loading="lazy"></div>
+      <div class="footer-partner-logo"><img src="assets/partners/gann-logo.png" alt="GANN stavební s.r.o." loading="lazy"></div>
+      <div class="footer-partner-logo"><img src="assets/partners/sportovni-klinika.png" alt="Sportovní klinika" loading="lazy"></div>
+    </div>
+  </section>
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="" class="footer-logo">

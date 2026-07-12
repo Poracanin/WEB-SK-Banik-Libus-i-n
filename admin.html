@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Správa klubu | SK Baník Libušín</title>
+<link rel="icon" href="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css?v=1">
+</head>
+<body>
+<main class="login-shell" id="loginView">
+  <section class="login-card" aria-labelledby="loginTitle">
+    <div class="brand-mark">
+      <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="">
+      <span>SK Baník Libušín</span>
+    </div>
+    <p class="eyebrow">Klubová správa</p>
+    <h1 id="loginTitle">Přihlášení do administrace</h1>
+    <p class="login-copy">Správa soupisek, výsledků, rezervací hřiště, oznámení a rolí podle kategorie.</p>
+
+    <form class="login-form" id="loginForm">
+      <label>
+        <span>Uživatelské jméno</span>
+        <input type="text" id="loginUsername" autocomplete="username" value="admin" required>
+      </label>
+      <label>
+        <span>Heslo</span>
+        <input type="password" id="loginPassword" autocomplete="current-password" value="admin123" required>
+      </label>
+      <button type="submit" class="primary-btn full">
+        <span aria-hidden="true">→</span>
+        Přihlásit
+      </button>
+    </form>
+
+    <div class="demo-logins" aria-label="Demo účty">
+      <button type="button" data-demo-user="admin" data-demo-pass="admin123">Admin</button>
+      <button type="button" data-demo-user="trener_a" data-demo-pass="a123">A tým</button>
+      <button type="button" data-demo-user="trener_b" data-demo-pass="b123">B tým</button>
+      <button type="button" data-demo-user="dorost" data-demo-pass="d123">Dorost</button>
+      <button type="button" data-demo-user="spravce_hriste" data-demo-pass="hriste123">Hřiště</button>
+    </div>
+    <p class="login-note">Demo databáze se vytvoří automaticky při prvním spuštění serveru.</p>
+  </section>
+</main>
+
+<section class="admin-shell" id="appView" hidden>
+  <aside class="sidebar" aria-label="Hlavní správa">
+    <a class="side-brand" href="index.html" aria-label="Zpět na web">
+      <img src="https://skbaniklibusin.cz/wp-content/uploads/2025/10/cropped-SKBL-2026.png" alt="">
+      <span>Baník správa</span>
+    </a>
+
+    <nav class="side-nav">
+      <button type="button" data-view="dashboard" class="active">
+        <span aria-hidden="true">⌂</span>
+        Přehled
+      </button>
+      <button type="button" data-view="players">
+        <span aria-hidden="true">◯</span>
+        Soupisky
+      </button>
+      <button type="button" data-view="matches">
+        <span aria-hidden="true">✓</span>
+        Výsledky
+      </button>
+      <button type="button" data-view="reservations">
+        <span aria-hidden="true">□</span>
+        Rezervace
+      </button>
+      <button type="button" data-view="roles" id="rolesNav">
+        <span aria-hidden="true">⚙</span>
+        Role
+      </button>
+    </nav>
+
+    <div class="user-card">
+      <span class="avatar" id="userAvatar">A</span>
+      <div>
+        <strong id="userName">Uživatel</strong>
+        <span id="userRole">Role</span>
+      </div>
+    </div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow" id="viewKicker">Správa klubu</p>
+        <h1 id="viewTitle">Přehled</h1>
+      </div>
+      <div class="topbar-actions">
+        <button type="button" class="ghost-btn" id="notificationButton">
+          <span aria-hidden="true">●</span>
+          <span id="notificationCount">0</span>
+        </button>
+        <button type="button" class="ghost-btn" id="logoutButton">Odhlásit</button>
+      </div>
+    </header>
+
+    <div class="toast" id="toast" hidden></div>
+    <section class="view-content" id="content" aria-live="polite"></section>
+  </div>
+</section>
+
+<script src="admin.js?v=1"></script>
+</body>
+</html>
