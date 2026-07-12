@@ -18,8 +18,7 @@
     selectedDate: "",
     selectedStart: null,
     selectedEnd: null,
-    selectedEventId: null,
-    pending: null
+    selectedEventId: null
   };
 
   function $(id) { return document.getElementById(id); }
@@ -453,30 +452,11 @@
     }).join("");
   }
 
-  function renderRequestDate() {
-    var input = $("requestDate");
-    if (input) input.value = state.selectedDate;
-  }
-
-  function renderPending() {
-    var box = $("fieldPending");
-    if (!box) return;
-    if (!state.pending) {
-      box.hidden = true;
-      box.innerHTML = "";
-      return;
-    }
-    box.hidden = false;
-    box.innerHTML = "Demo žádost: " + esc(state.pending.name) + " · " + esc(state.pending.place) + " · " + esc(state.pending.date) + " · " + esc(state.pending.from) + " - " + esc(state.pending.to) + ". Po napojení se tohle bude odesílat správci.";
-  }
-
   function render() {
     renderSegments();
     renderStatus();
     renderCalendar();
     renderDetail();
-    renderRequestDate();
-    renderPending();
   }
 
   function movePeriod(direction) {
@@ -548,23 +528,6 @@
       render();
     });
 
-    $("requestDate").addEventListener("change", function (event) {
-      state.selectedDate = event.target.value || state.selectedDate;
-      resetSelection(true);
-      render();
-    });
-
-    $("fieldDemoForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-      state.pending = {
-        name: $("requestName").value || "Bez jména",
-        place: $("requestPlace").value || facilityLabel(),
-        date: $("requestDate").value || state.selectedDate,
-        from: $("requestFrom").value,
-        to: $("requestTo").value
-      };
-      renderPending();
-    });
   }
 
   function applyInitialParams() {

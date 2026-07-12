@@ -34,8 +34,7 @@ body.field-page {
 }
 
 .field-status-card,
-.field-panel,
-.field-request-panel {
+.field-panel {
   min-width: 0;
   background: #ffffff;
   border: 1px solid var(--line-soft);
@@ -97,8 +96,7 @@ body.field-page {
   gap: 18px;
 }
 
-.field-panel-title,
-.field-request-title {
+.field-panel-title {
   margin: 0;
   font-family: Oswald, sans-serif;
   font-size: 34px;
@@ -172,7 +170,6 @@ body.field-page {
 }
 
 .field-segmented button,
-.field-form button,
 .field-icon-btn,
 .field-jump,
 .field-week-cell,
@@ -767,122 +764,6 @@ body.field-page {
   display: inline-block;
 }
 
-/* ============ ZADOST ============ */
-.field-request-grid {
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: minmax(0, .8fr) minmax(320px, .7fr);
-  gap: 18px;
-  align-items: start;
-}
-
-.field-request-panel {
-  border-radius: 8px;
-  padding: 30px;
-  animation: fieldItemIn .55s cubic-bezier(.16, 1, .3, 1) both;
-}
-
-.field-request-panel p {
-  margin: 10px 0 0;
-  color: var(--ink-soft);
-  font-size: 14.5px;
-  line-height: 1.62;
-}
-
-.field-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.field-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.field-form .full {
-  grid-column: 1 / -1;
-}
-
-.field-form span {
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-
-.field-form input,
-.field-form select {
-  width: 100%;
-  border: none;
-  border-radius: 6px;
-  background: #f5f5f7;
-  padding: 12px 13px;
-  color: var(--ink);
-  font: inherit;
-  font-size: 14px;
-}
-
-.field-form input:focus,
-.field-form select:focus {
-  outline: 2px solid rgba(220, 38, 38, .34);
-}
-
-.field-submit {
-  grid-column: 1 / -1;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-  background: var(--red);
-  color: #ffffff;
-  padding: 13px 16px;
-  font-size: 14px;
-  font-weight: 900;
-  box-shadow: 0 10px 26px rgba(220, 38, 38, .28);
-  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-}
-
-.field-submit:hover {
-  transform: translateY(-2px);
-  background: var(--red-dark);
-  box-shadow: 0 16px 34px rgba(220, 38, 38, .36);
-}
-
-.field-pending {
-  margin-top: 12px;
-  border: 1px dashed rgba(217, 119, 6, .48);
-  border-radius: 6px;
-  background: #fffbeb;
-  color: #92400e;
-  padding: 12px 14px;
-  font-size: 13px;
-  line-height: 1.45;
-  font-weight: 700;
-}
-
-.field-note-list {
-  display: grid;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.field-note-list span {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  color: var(--ink-soft);
-  font-size: 13.5px;
-  line-height: 1.45;
-}
-
-.field-note-list svg {
-  flex: none;
-  margin-top: 1px;
-  color: var(--red);
-}
-
 @media (max-width: 980px) {
   .field-calendar-shell {
     grid-template-columns: 1fr;
@@ -890,10 +771,6 @@ body.field-page {
 
   .field-inspector {
     position: static;
-  }
-
-  .field-request-grid {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -959,8 +836,7 @@ body.field-page {
     gap: 10px;
   }
 
-  .field-panel-title,
-  .field-request-title {
+  .field-panel-title {
     font-size: 27px;
   }
 
@@ -1114,15 +990,6 @@ body.field-page {
     font-size: 8px;
     letter-spacing: .08em;
   }
-
-  .field-request-panel {
-    border-radius: 8px;
-    padding: 22px;
-  }
-
-  .field-form {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 420px) {
@@ -1135,7 +1002,6 @@ body.field-page {
   .field-status-card,
   .field-panel,
   .field-event,
-  .field-request-panel,
   .field-source-pill::before {
     animation: none !important;
   }
