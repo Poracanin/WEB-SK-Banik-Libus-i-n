@@ -13,6 +13,7 @@
     category: localStorage.getItem(categoryKey) || "",
     players: [],
     matches: [],
+    articles: [],
     reservations: [],
     canManageReservations: false,
     users: [],
@@ -41,6 +42,7 @@
     dashboard: ["Správa klubu", "Přehled"],
     players: ["Kategorie", "Soupisky"],
     matches: ["Zápasy", "Výsledky"],
+    articles: ["Redakce", "Články"],
     reservations: ["Hřiště", "Rezervace"],
     roles: ["Admin", "Role"],
   };
@@ -245,6 +247,18 @@
     state.matches = data.matches || [];
   }
 
+  async function loadArticles() {
+    ensureCategory("can_write_results");
+    if (!state.category) {
+      state.articles = [];
+      state.matches = [];
+      return;
+    }
+    const data = await api(`/api/articles?category=${encodeURIComponent(state.category)}`);
+    state.articles = data.articles || [];
+    await loadMatches();
+  }
+
   async function loadReservations() {
     const data = await api("/api/reservations");
     state.reservations = data.reservations || [];
@@ -293,6 +307,9 @@
       if (view === "matches") {
         await loadMatches();
       }
+      if (view === "articles") {
+        await loadArticles();
+      }
       if (view === "reservations") {
         await loadReservations();
       }
@@ -310,6 +327,7 @@
   function renderView() {
     if (state.view === "players") return renderPlayers();
     if (state.view === "matches") return renderMatches();
+    if (state.view === "articles") return renderArticles();
     if (state.view === "reservations") return renderReservations();
     if (state.view === "roles") return renderRoles();
     return renderDashboard();
@@ -319,46 +337,54 @@
     return `<article class="metric ${color || ""}"><span>${esc(label)}</span><strong>${esc(value)}</strong></article>`;
   }
 
+  function dashboardTile(view, title, copy, value, tone, icon) {
+    return `
+      <button type="button" class="admin-tile ${tone || ""}" data-go="${esc(view)}">
+        <span class="tile-icon" aria-hidden="true">${icon}</span>
+        <span class="tile-copy">
+          <strong>${esc(title)}</strong>
+          <small>${esc(copy)}</small>
+        </span>
+        <span class="tile-value">${esc(value)}</span>
+      </button>
+    `;
+  }
+
   function renderDashboard() {
     const rosterCount = categoriesFor("can_manage_roster").length;
     const resultCount = categoriesFor("can_write_results").length;
     const pending = state.reservations.filter((item) => item.status === "pending").length;
     const managedReservations = state.canManageReservations ? "Ano" : "Jen žádosti";
-    const permissionRows = state.categories.map((category) => {
-      const roster = canCategory(category.key, "can_manage_roster");
-      const results = canCategory(category.key, "can_write_results");
-      return `
-        <div class="permission-row">
-          <strong>${esc(category.name)}</strong>
-          <span class="pill ${roster ? "green" : ""}">${roster ? "Soupiska" : "Bez soupisky"}</span>
-          <span class="pill ${results ? "blue" : ""}">${results ? "Výsledky" : "Bez výsledků"}</span>
-        </div>
-      `;
-    }).join("");
+    const playerIcon = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c.8-3.2 3.4-5 6.5-5s5.7 1.8 6.5 5"></path><circle cx="17" cy="9" r="2.7"></circle><path d="M16.5 15.2c2.6.2 4.4 1.7 5 4.3"></path></svg>';
+    const matchIcon = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4"></path><path d="M6 3h12v6a6 6 0 0 1-12 0V3z"></path><path d="M6 5H3.5A1.5 1.5 0 0 0 2 6.5 3.5 3.5 0 0 0 5.5 10H6M18 5h2.5A1.5 1.5 0 0 1 22 6.5 3.5 3.5 0 0 1 18.5 10H18"></path></svg>';
+    const articleIcon = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h9l5 5v11.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5z"></path><path d="M14 3v6h6M8 13h8M8 17h6"></path></svg>';
+    const reservationIcon = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"></rect><path d="M8 2v4M16 2v4M3 9h18M8 14h3M8 17.5h6"></path></svg>';
+    const roleIcon = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V7l7-4z"></path><path d="M9.5 12.5l1.7 1.7 3.8-4"></path></svg>';
 
     els.content.innerHTML = `
-      <div class="grid cols-3">
-        ${metric("Soupisky", rosterCount, "green")}
-        ${metric("Výsledky", resultCount, "blue")}
-        ${metric("Rezervace", managedReservations, "amber")}
+      <section class="home-intro">
+        <h2>Dobrý den</h2>
+        <p>Co chcete dnes spravovat?</p>
+      </section>
+
+      <div class="admin-tile-grid">
+        ${dashboardTile("players", "Soupisky", "Hráči, čísla a aktivita", `${rosterCount} týmů`, "green", playerIcon)}
+        ${dashboardTile("matches", "Výsledky", "Zápasy, skóre a poznámky", `${resultCount} týmů`, "red", matchIcon)}
+        ${dashboardTile("articles", "Články", "Reportáže a aktuality na web", "Editor", "blue", articleIcon)}
+        ${dashboardTile("reservations", "Rezervace", "Hřiště a klubovna", pending ? `${pending} čeká` : managedReservations, "amber", reservationIcon)}
+        ${isAdmin() ? dashboardTile("roles", "Role", "Uživatelé a oprávnění", "Admin", "dark", roleIcon) : ""}
       </div>
 
       <div class="grid cols-2" style="margin-top:14px">
         <section class="panel">
           <div class="panel-head">
             <div>
-              <h2 class="panel-title">Rychlé akce</h2>
-              <p class="panel-copy">Vyber část správy podle toho, co zrovna potřebuješ upravit.</p>
+              <h2 class="panel-title">Nejbližší věci</h2>
+              <p class="panel-copy">${pending ? `${pending} rezervací čeká na reakci.` : "V rezervacích teď nic nehoří."}</p>
             </div>
-            <span class="pill red">${esc(state.unread)} nových</span>
+            <button type="button" class="ghost-btn" data-go="reservations">Rezervace</button>
           </div>
-          <div class="quick-actions">
-            <button type="button" class="mini-btn" data-go="players">Soupisky</button>
-            <button type="button" class="mini-btn" data-go="matches">Výsledky</button>
-            <button type="button" class="mini-btn" data-go="reservations">Rezervace</button>
-            ${isAdmin() ? '<button type="button" class="mini-btn" data-go="roles">Role</button>' : ""}
-          </div>
-          <div class="records" style="margin-top:14px">
+          <div class="records">
             ${state.reservations.slice(0, 4).map(reservationCard).join("") || '<div class="empty-state">Zatím tu nejsou žádné rezervace.</div>'}
           </div>
         </section>
@@ -367,29 +393,19 @@
           <div class="panel-head">
             <div>
               <h2 class="panel-title">Oznámení</h2>
-              <p class="panel-copy">${pending ? `${pending} rezervací čeká na reakci.` : "Žádná rezervace teď nečeká na schválení."}</p>
+              <p class="panel-copy">${state.unread ? `${state.unread} nových oznámení.` : "Všechno je přečtené."}</p>
             </div>
             <button type="button" class="ghost-btn" data-mark-read>Označit přečtené</button>
           </div>
           ${notificationList()}
         </section>
       </div>
-
-      <section class="panel" style="margin-top:14px">
-        <div class="panel-head">
-          <div>
-            <h2 class="panel-title">Moje oprávnění</h2>
-            <p class="panel-copy">Admin vidí a spravuje vše. Ostatní uživatelé mají přístup jen k přiděleným kategoriím.</p>
-          </div>
-        </div>
-        <div class="permission-grid">${permissionRows || '<div class="empty-state">Nemáte přidělenou žádnou kategorii.</div>'}</div>
-      </section>
     `;
   }
 
   function categoryToolbar(copy) {
-    const categories = viewableCategories();
-    ensureCategory();
+    const categories = state.view === "articles" ? categoriesFor("can_write_results") : viewableCategories();
+    ensureCategory(state.view === "articles" ? "can_write_results" : undefined);
     if (!categories.length) {
       return '<div class="empty-state">Tento účet nemá přidělenou žádnou kategorii.</div>';
     }
@@ -586,6 +602,147 @@
           <div class="record-actions">
             <button type="button" class="mini-btn" data-edit-match="${match.id}">Upravit</button>
             <button type="button" class="danger-btn" data-delete-match="${match.id}">Smazat</button>
+          </div>
+        ` : ""}
+      </article>
+    `;
+  }
+
+  function articleTypeText(type) {
+    return {
+      match_report: "Zápas",
+      news: "Aktualita",
+      invitation: "Pozvánka",
+      club: "Klub",
+    }[type] || "Článek";
+  }
+
+  function articleStatusText(status) {
+    return status === "published" ? "Zveřejněno" : "Rozepsáno";
+  }
+
+  function articleMatchTitle(match) {
+    if (!match) return "";
+    const home = match.home_away === "home" ? "SK Baník Libušín" : match.opponent;
+    const away = match.home_away === "home" ? match.opponent : "SK Baník Libušín";
+    const score = match.status === "played" ? `${match.goals_for}:${match.goals_against}` : statusText(match.status);
+    return `${home} – ${away} ${score}`;
+  }
+
+  function renderArticles() {
+    const canEdit = state.category && canCategory(state.category, "can_write_results");
+    const matchOptions = state.matches.map((match) => `
+      <option value="${match.id}">${esc(formatDate(match.played_on))} · ${esc(articleMatchTitle(match))}</option>
+    `).join("");
+    const form = canEdit ? `
+      <section class="panel article-editor-panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title" id="articleFormTitle">Napsat článek</h2>
+            <p class="panel-copy">Článek se uloží do SQLite. Zveřejněné články se ukážou na webu, rozepsané zůstanou jen tady.</p>
+          </div>
+        </div>
+        <form class="form-grid article-form" id="articleForm">
+          <label>
+            <span>Typ článku</span>
+            <select name="article_type">
+              <option value="match_report">Zápas / reportáž</option>
+              <option value="news">Aktualita</option>
+              <option value="invitation">Pozvánka</option>
+              <option value="club">Klubová zpráva</option>
+            </select>
+          </label>
+          <label>
+            <span>Zápas</span>
+            <select name="match_id" id="articleMatchSelect">
+              <option value="">Bez vybraného zápasu</option>
+              ${matchOptions}
+            </select>
+          </label>
+          <label class="wide">
+            <span>Nadpis</span>
+            <input name="title" id="articleTitleInput" placeholder="SK Baník Libušín – Soupeř 2:1 (1:0)" required>
+          </label>
+          <label class="wide">
+            <span>Komentář pod nadpis</span>
+            <textarea name="lead" class="short-textarea" placeholder="Krátké shrnutí, které se zobrazí v přehledu článků."></textarea>
+          </label>
+          <label>
+            <span>Střelci / branky</span>
+            <input name="goals" placeholder="28. Hlavsa, 90. Jechumtál">
+          </label>
+          <label>
+            <span>Fotka článku</span>
+            <input name="image_url" placeholder="assets/articles/fotka.jpg">
+          </label>
+          <label class="wide">
+            <span>Sestava</span>
+            <textarea name="lineup" placeholder="Holas – Pucholt, Chlumský..."></textarea>
+          </label>
+          <label class="wide">
+            <span>Text článku</span>
+            <textarea name="content" class="article-body-input" placeholder="Sem napište celý článek..." required></textarea>
+          </label>
+          <label>
+            <span>Stav</span>
+            <select name="status">
+              <option value="draft">Rozepsáno</option>
+              <option value="published">Zveřejnit na webu</option>
+            </select>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="primary-btn">Uložit článek</button>
+            <button type="button" class="ghost-btn" data-cancel-article>Vyčistit</button>
+          </div>
+        </form>
+      </section>
+    ` : `
+      <section class="panel">
+        <div class="empty-state">Články této kategorie můžete jen zobrazit. Psaní musí povolit administrátor přes právo Výsledky.</div>
+      </section>
+    `;
+
+    els.content.innerHTML = `
+      ${categoryToolbar("Vyber tým, ke kterému článek patří. Zápasové články můžeš navázat přímo na uložený výsledek.")}
+      <div class="grid cols-2 article-layout">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2 class="panel-title">${esc(categoryName(state.category))}</h2>
+              <p class="panel-copy">${state.articles.length} článků v SQLite pro tuto kategorii.</p>
+            </div>
+            <span class="pill ${canEdit ? "green" : "amber"}">${canEdit ? "Lze psát" : "Jen čtení"}</span>
+          </div>
+          <div class="records">
+            ${state.articles.map(articleCard).join("") || '<div class="empty-state">Zatím žádný článek v této kategorii.</div>'}
+          </div>
+        </section>
+        ${form}
+      </div>
+    `;
+  }
+
+  function articleCard(article) {
+    const canEdit = canCategory(article.category_key || state.category, "can_write_results");
+    return `
+      <article class="record article-record">
+        <div class="record-main">
+          <div class="record-title">
+            <span class="pill ${article.status === "published" ? "green" : "amber"}">${esc(articleStatusText(article.status))}</span>
+            <span class="pill blue">${esc(articleTypeText(article.article_type))}</span>
+            <strong>${esc(article.title)}</strong>
+          </div>
+          <div class="record-meta">
+            ${esc(article.category_name || categoryName(state.category))} · ${esc(String(article.updated_at || article.created_at || "").replace("T", " ").slice(0, 16))}
+            ${article.match_label ? ` · ${esc(article.match_label)}` : ""}
+            ${article.lead ? ` · ${esc(article.lead)}` : ""}
+          </div>
+        </div>
+        ${canEdit ? `
+          <div class="record-actions">
+            <button type="button" class="mini-btn" data-edit-article="${article.id}">Upravit</button>
+            ${article.status === "published" ? `<a class="mini-btn" href="clanek.html?id=db-${article.id}" target="_blank" rel="noopener">Otevřít</a>` : ""}
+            <button type="button" class="danger-btn" data-delete-article="${article.id}">Smazat</button>
           </div>
         ` : ""}
       </article>
@@ -884,6 +1041,45 @@
     form.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
+  function resetArticleForm() {
+    const form = qs("#articleForm", els.content);
+    if (!form) return;
+    form.reset();
+    form.dataset.editId = "";
+    qs("#articleFormTitle", els.content).textContent = "Napsat článek";
+  }
+
+  function fillArticleForm(id) {
+    const article = state.articles.find((item) => Number(item.id) === Number(id));
+    const form = qs("#articleForm", els.content);
+    if (!article || !form) return;
+    form.dataset.editId = article.id;
+    qs("#articleFormTitle", els.content).textContent = "Upravit článek";
+    form.elements.article_type.value = article.article_type || "match_report";
+    form.elements.match_id.value = article.match_id || "";
+    form.elements.title.value = article.title || "";
+    form.elements.lead.value = article.lead || "";
+    form.elements.goals.value = article.goals || "";
+    form.elements.image_url.value = article.image_url || "";
+    form.elements.lineup.value = article.lineup || "";
+    form.elements.content.value = article.content || "";
+    form.elements.status.value = article.status || "draft";
+    form.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function applyArticleMatchPreset(matchId) {
+    const form = qs("#articleForm", els.content);
+    if (!form || !matchId) return;
+    const match = state.matches.find((item) => Number(item.id) === Number(matchId));
+    if (!match) return;
+    if (!form.elements.title.value.trim()) {
+      form.elements.title.value = articleMatchTitle(match);
+    }
+    if (!form.elements.lead.value.trim()) {
+      form.elements.lead.value = `${formatDate(match.played_on)} · ${match.home_away === "home" ? "Domácí zápas" : "Venkovní zápas"}`;
+    }
+  }
+
   function resetUserForm() {
     const form = qs("#userForm", els.content);
     if (!form) return;
@@ -970,6 +1166,31 @@
     renderMatches();
   }
 
+  async function submitArticle(form) {
+    const payload = {
+      category: state.category,
+      article_type: form.elements.article_type.value,
+      match_id: form.elements.match_id.value || null,
+      title: form.elements.title.value.trim(),
+      lead: form.elements.lead.value.trim(),
+      goals: form.elements.goals.value.trim(),
+      lineup: form.elements.lineup.value.trim(),
+      content: form.elements.content.value.trim(),
+      image_url: form.elements.image_url.value.trim(),
+      status: form.elements.status.value,
+    };
+    const id = form.dataset.editId;
+    if (id) {
+      await api(`/api/articles/${id}`, { method: "PUT", body: payload });
+      setToast("Článek je upravený.");
+    } else {
+      await api("/api/articles", { method: "POST", body: payload });
+      setToast(payload.status === "published" ? "Článek je zveřejněný." : "Článek je uložený jako rozepsaný.");
+    }
+    await loadArticles();
+    renderArticles();
+  }
+
   async function submitReservation(form) {
     const payload = {
       requester_name: form.elements.requester_name.value.trim(),
@@ -1038,6 +1259,7 @@
     try {
       if (form.id === "playerForm") await submitPlayer(form);
       if (form.id === "matchForm") await submitMatch(form);
+      if (form.id === "articleForm") await submitArticle(form);
       if (form.id === "reservationForm") await submitReservation(form);
       if (form.id === "userForm") await submitUser(form);
     } catch (error) {
@@ -1062,8 +1284,10 @@
       }
       if (button.dataset.cancelPlayer !== undefined) resetPlayerForm();
       if (button.dataset.cancelMatch !== undefined) resetMatchForm();
+      if (button.dataset.cancelArticle !== undefined) resetArticleForm();
       if (button.dataset.editPlayer) fillPlayerForm(button.dataset.editPlayer);
       if (button.dataset.editMatch) fillMatchForm(button.dataset.editMatch);
+      if (button.dataset.editArticle) fillArticleForm(button.dataset.editArticle);
       if (button.dataset.editUser) fillUserForm(button.dataset.editUser);
       if (button.dataset.newUser !== undefined) resetUserForm();
       if (button.dataset.deletePlayer) {
@@ -1079,6 +1303,13 @@
         await loadMatches();
         renderMatches();
         setToast("Zápas je smazaný.");
+      }
+      if (button.dataset.deleteArticle) {
+        if (!window.confirm("Opravdu smazat článek?")) return;
+        await api(`/api/articles/${button.dataset.deleteArticle}`, { method: "DELETE" });
+        await loadArticles();
+        renderArticles();
+        setToast("Článek je smazaný.");
       }
       if (button.dataset.reservationStatus) {
         const note = window.prompt("Poznámka ke změně stavu:", "") || "";
@@ -1110,6 +1341,13 @@
           await loadMatches();
           renderMatches();
         }
+        if (state.view === "articles") {
+          await loadArticles();
+          renderArticles();
+        }
+      }
+      if (event.target.id === "articleMatchSelect") {
+        applyArticleMatchPreset(event.target.value);
       }
       if (event.target.id === "userSelect") {
         if (event.target.value) {

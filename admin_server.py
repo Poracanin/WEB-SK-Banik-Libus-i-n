@@ -118,6 +118,27 @@ def init_db() -> None:
               FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
             );
 
+            CREATE TABLE IF NOT EXISTS articles (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              category_id INTEGER,
+              match_id INTEGER,
+              article_type TEXT NOT NULL DEFAULT 'match_report',
+              title TEXT NOT NULL,
+              lead TEXT DEFAULT '',
+              goals TEXT DEFAULT '',
+              lineup TEXT DEFAULT '',
+              content TEXT NOT NULL,
+              image_url TEXT DEFAULT '',
+              status TEXT NOT NULL DEFAULT 'draft',
+              created_by INTEGER,
+              created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+              updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+              published_at TEXT,
+              FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL,
+              FOREIGN KEY (match_id) REFERENCES matches(id) ON DELETE SET NULL,
+              FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+            );
+
             CREATE TABLE IF NOT EXISTS reservations (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               requested_by INTEGER,
@@ -456,6 +477,8 @@ class AdminHandler(BaseHTTPRequestHandler):
                     return self.api_login(conn)
                 if path == "/api/logout" and method == "POST":
                     return self.api_logout(conn)
+                if path == "/api/public/articles" and method == "GET":
+                    return self.api_public_articles(conn)
 
                 user = self.require_user(conn)
                 if not user:
@@ -478,6 +501,10 @@ class AdminHandler(BaseHTTPRequestHandler):
                     return self.api_matches(conn, user, method, parse_qs(parsed.query))
                 if len(parts) == 3 and parts[:2] == ["api", "matches"]:
                     return self.api_match_item(conn, user, method, int(parts[2]))
+                if path == "/api/articles":
+                    return self.api_articles(conn, user, method, parse_qs(parsed.query))
+                if len(parts) == 3 and parts[:2] == ["api", "articles"]:
+                    return self.api_article_item(conn, user, method, int(parts[2]))
                 if path == "/api/reservations":
                     return self.api_reservations(conn, user, method)
                 if len(parts) == 3 and parts[:2] == ["api", "reservations"]:
@@ -664,6 +691,218 @@ class AdminHandler(BaseHTTPRequestHandler):
             )
             return self.send_json(200, {"ok": True})
         self.send_error_json(405, "Metoda není povolená.")
+
+    def article_rows(self, conn: sqlite3.Connection, where: str = "", params: tuple = ()) -> list[sqlite3.Row]:
+        sql = """
+            SELECT a.*, c.key AS category_key, c.name AS category_name,
+                   m.played_on AS match_date, m.opponent AS match_opponent,
+                   m.home_away AS match_home_away, m.goals_for AS match_goals_for,
+                   m.goals_against AS match_goals_against, m.status AS match_status,
+                   u.display_name AS created_by_name
+            FROM articles a
+            LEFT JOIN categories c ON c.id = a.category_id
+            LEFT JOIN matches m ON m.id = a.match_id
+            LEFT JOIN users u ON u.id = a.created_by
+        """
+        if where:
+            sql += " WHERE " + where
+        sql += " ORDER BY COALESCE(a.published_at, a.created_at) DESC, a.id DESC"
+        return conn.execute(sql, params).fetchall()
+
+    def match_label(self, row: sqlite3.Row) -> str:
+        if not row["match_id"]:
+            return ""
+        home = "Baník Libušín" if row["match_home_away"] == "home" else row["match_opponent"]
+        away = row["match_opponent"] if row["match_home_away"] == "home" else "Baník Libušín"
+        if row["match_status"] == "played":
+            score = f"{row['match_goals_for']}:{row['match_goals_against']}"
+        else:
+            score = {"planned": "plánováno", "cancelled": "zrušeno"}.get(str(row["match_status"] or ""), "plánováno")
+        return f"{row['match_date']} · {home} {score} {away}"
+
+    def article_dict(self, row: sqlite3.Row) -> dict:
+        data = dict(row)
+        data["match_label"] = self.match_label(row)
+        return data
+
+    def can_write_article(self, conn: sqlite3.Connection, user: sqlite3.Row, category_key: str | None) -> bool:
+        if user["is_admin"]:
+            return True
+        if not category_key:
+            return False
+        return can_category(conn, user, category_key, "can_write_results")
+
+    def public_article_from_row(self, row: sqlite3.Row) -> dict:
+        content_parts = []
+        if row["goals"]:
+            content_parts.append("Branky: " + row["goals"])
+        if row["lineup"]:
+            content_parts.append("Sestava: " + row["lineup"])
+        content_parts.append(row["content"] or "")
+        featured = {"url": row["image_url"], "source_url": row["image_url"]} if row["image_url"] else None
+        date_created = row["published_at"] or row["created_at"]
+        return {
+            "id": f"db-{row['id']}",
+            "slug": f"clanek-{row['id']}",
+            "title": row["title"],
+            "link": f"clanek.html?id=db-{row['id']}",
+            "date_created": date_created,
+            "date": date_created,
+            "author": {"name": row["created_by_name"] or "SK Baník Libušín"},
+            "categories": [{"name": row["category_name"] or "Aktuálně", "slug": row["category_key"] or "aktualne"}],
+            "tags": [{"name": row["article_type"]}],
+            "featured_image": featured,
+            "excerpt_text": row["lead"] or "",
+            "content_text": "\n\n".join([part for part in content_parts if part.strip()]),
+            "source": "sqlite",
+        }
+
+    def api_public_articles(self, conn: sqlite3.Connection) -> None:
+        articles: list[dict] = []
+        for row in self.article_rows(conn, "a.status = 'published'"):
+            articles.append(self.public_article_from_row(row))
+
+        legacy_path = ROOT / "skbaniklibusin_clanky.json"
+        if legacy_path.exists():
+            try:
+                legacy = json.loads(legacy_path.read_text(encoding="utf-8"))
+                articles.extend(legacy.get("articles") or [])
+            except Exception as exc:
+                print("Legacy articles error:", exc, file=sys.stderr)
+
+        def sort_key(item: dict) -> str:
+            return str(item.get("date_created") or item.get("date") or "")
+
+        articles.sort(key=sort_key, reverse=True)
+        self.send_json(200, {"articles": articles, "total_articles": len(articles), "source": "sqlite+json"})
+
+    def api_articles(self, conn: sqlite3.Connection, user: sqlite3.Row, method: str, query: dict) -> None:
+        if method == "GET":
+            key = (query.get("category") or [""])[0]
+            params: tuple = ()
+            where = ""
+            if key:
+                if not self.can_write_article(conn, user, key):
+                    return self.send_error_json(403, "Nemáte oprávnění pro články této kategorie.")
+                where = "c.key = ?"
+                params = (key,)
+            elif not user["is_admin"]:
+                allowed = [category["key"] for category in self.categories(conn) if self.can_write_article(conn, user, category["key"])]
+                if not allowed:
+                    return self.send_json(200, {"articles": []})
+                placeholders = ",".join("?" for _ in allowed)
+                where = f"c.key IN ({placeholders})"
+                params = tuple(allowed)
+            rows = self.article_rows(conn, where, params)
+            return self.send_json(200, {"articles": [self.article_dict(row) for row in rows]})
+
+        if method == "POST":
+            data = self.read_json()
+            key = str(data.get("category", "")).strip()
+            if not self.can_write_article(conn, user, key):
+                return self.send_error_json(403, "Nemůžete psát článek pro tuto kategorii.")
+            category = self.category_from_request(conn, key)
+            match_id = self.valid_article_match(conn, category["id"], data.get("match_id"))
+            title = str(data.get("title", "")).strip()
+            content = str(data.get("content", "")).strip()
+            if not title or not content:
+                return self.send_error_json(400, "Vyplňte nadpis a text článku.")
+            status = self.clean_article_status(data.get("status"))
+            published_at = now_iso() if status == "published" else None
+            cur = conn.execute(
+                """
+                INSERT INTO articles(category_id, match_id, article_type, title, lead, goals, lineup, content, image_url, status, created_by, created_at, updated_at, published_at)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    category["id"],
+                    match_id,
+                    self.clean_article_type(data.get("article_type")),
+                    title,
+                    str(data.get("lead", "")).strip(),
+                    str(data.get("goals", "")).strip(),
+                    str(data.get("lineup", "")).strip(),
+                    content,
+                    str(data.get("image_url", "")).strip(),
+                    status,
+                    user["id"],
+                    now_iso(),
+                    now_iso(),
+                    published_at,
+                ),
+            )
+            return self.send_json(201, {"id": cur.lastrowid})
+
+        self.send_error_json(405, "Metoda není povolená.")
+
+    def api_article_item(self, conn: sqlite3.Connection, user: sqlite3.Row, method: str, article_id: int) -> None:
+        row = self.article_rows(conn, "a.id = ?", (article_id,))
+        article = row[0] if row else None
+        if not article:
+            return self.send_error_json(404, "Článek neexistuje.")
+        if not self.can_write_article(conn, user, article["category_key"]):
+            return self.send_error_json(403, "Nemůžete upravit tento článek.")
+        if method == "DELETE":
+            conn.execute("DELETE FROM articles WHERE id = ?", (article_id,))
+            return self.send_json(200, {"ok": True})
+        if method == "PUT":
+            data = self.read_json()
+            key = str(data.get("category", article["category_key"] or "")).strip()
+            if not self.can_write_article(conn, user, key):
+                return self.send_error_json(403, "Nemůžete článek přesunout do této kategorie.")
+            category = self.category_from_request(conn, key)
+            match_id = self.valid_article_match(conn, category["id"], data.get("match_id"))
+            title = str(data.get("title", article["title"])).strip()
+            content = str(data.get("content", article["content"])).strip()
+            if not title or not content:
+                return self.send_error_json(400, "Vyplňte nadpis a text článku.")
+            status = self.clean_article_status(data.get("status", article["status"]))
+            published_at = article["published_at"]
+            if status == "published" and not published_at:
+                published_at = now_iso()
+            if status != "published":
+                published_at = None
+            conn.execute(
+                """
+                UPDATE articles SET category_id = ?, match_id = ?, article_type = ?, title = ?, lead = ?,
+                  goals = ?, lineup = ?, content = ?, image_url = ?, status = ?, updated_at = ?, published_at = ?
+                WHERE id = ?
+                """,
+                (
+                    category["id"],
+                    match_id,
+                    self.clean_article_type(data.get("article_type", article["article_type"])),
+                    title,
+                    str(data.get("lead", article["lead"] or "")).strip(),
+                    str(data.get("goals", article["goals"] or "")).strip(),
+                    str(data.get("lineup", article["lineup"] or "")).strip(),
+                    content,
+                    str(data.get("image_url", article["image_url"] or "")).strip(),
+                    status,
+                    now_iso(),
+                    published_at,
+                    article_id,
+                ),
+            )
+            return self.send_json(200, {"ok": True})
+        self.send_error_json(405, "Metoda není povolená.")
+
+    def clean_article_type(self, value) -> str:
+        value = str(value or "match_report")
+        return value if value in ("match_report", "news", "invitation", "club") else "match_report"
+
+    def clean_article_status(self, value) -> str:
+        value = str(value or "draft")
+        return value if value in ("draft", "published") else "draft"
+
+    def valid_article_match(self, conn: sqlite3.Connection, category_id: int, raw_match_id) -> int | None:
+        if raw_match_id in (None, "", 0, "0"):
+            return None
+        match_id = int(raw_match_id)
+        match = conn.execute("SELECT id FROM matches WHERE id = ? AND category_id = ?", (match_id, category_id)).fetchone()
+        if not match:
+            raise ValueError("Vybraný zápas nepatří do této kategorie.")
+        return match_id
 
     def api_reservations(self, conn: sqlite3.Connection, user: sqlite3.Row, method: str) -> None:
         if method == "GET":

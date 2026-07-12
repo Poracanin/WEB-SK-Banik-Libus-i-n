@@ -1225,13 +1225,6 @@ body.article-detail-page .nav-brand-text span {
   font-size: 16px;
   line-height: 1.72;
 }
-.article-source {
-  display: inline-flex;
-  margin-top: 12px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
 @media (max-width: 719px) {
   .news-grid {
     grid-template-columns: 1fr;

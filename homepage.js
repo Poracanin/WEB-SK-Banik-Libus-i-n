@@ -68,6 +68,7 @@
 
   var MATCHES_URL = "skbaniklibusin_fotbalcz_vysledky_tabulky.json";
   var ARTICLES_URL = "skbaniklibusin_clanky.json";
+  var PUBLIC_ARTICLES_URL = (window.location.port === "8090" ? "" : "http://localhost:8090") + "/api/public/articles";
 
   var TEAM_LABELS = { a: "A tým", b: "B tým", dorost: "Dorost" };
   var TEAM_BADGES = { a: "Muži A", b: "Muži B", dorost: "Mládež" };
@@ -654,9 +655,15 @@
     });
   }
 
+  function loadArticlesData() {
+    return loadJson(PUBLIC_ARTICLES_URL).catch(function () {
+      return loadJson(ARTICLES_URL);
+    });
+  }
+
   function loadData() {
     var pMatches = loadJson(MATCHES_URL).catch(function (e) { console.error("Zápasy se nepodařilo načíst:", e); return null; });
-    var pArticles = loadJson(ARTICLES_URL).catch(function (e) { console.error("Články se nepodařilo načíst:", e); return null; });
+    var pArticles = loadArticlesData().catch(function (e) { console.error("Články se nepodařilo načíst:", e); return null; });
 
     Promise.all([pMatches, pArticles]).then(function (res) {
       var matchesJson = res[0], articlesJson = res[1];

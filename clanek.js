@@ -5,6 +5,7 @@
   "use strict";
 
   var ARTICLES_URL = "skbaniklibusin_clanky.json";
+  var PUBLIC_ARTICLES_URL = (window.location.port === "8090" ? "" : "http://localhost:8090") + "/api/public/articles";
   var MONTHS_GEN = ["ledna", "února", "března", "dubna", "května", "června",
     "července", "srpna", "září", "října", "listopadu", "prosince"];
 
@@ -125,7 +126,6 @@
       articleMatchOverview(summary) +
       image +
       '<div class="article-text">' + articleBodyHtml(article) + "</div>" +
-      '<a class="article-source" href="' + esc(article.link) + '" target="_blank" rel="noopener">Původní článek</a>' +
       "</div>";
   }
 
@@ -196,13 +196,19 @@
     });
   }
 
+  function loadArticlesData() {
+    return loadJson(PUBLIC_ARTICLES_URL).catch(function () {
+      return loadJson(ARTICLES_URL);
+    });
+  }
+
   function init() {
     var id = selectedArticleId();
     if (!id) {
       renderError("Článek nebyl vybrán");
       return;
     }
-    loadJson(ARTICLES_URL).then(function (json) {
+    loadArticlesData().then(function (json) {
       var article = findArticle(ingestArticles(json), id);
       if (!article) {
         renderError("Článek se nenašel");
