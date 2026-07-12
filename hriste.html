@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="homepage.css?v=3">
 <link rel="stylesheet" href="page.css?v=2">
-<link rel="stylesheet" href="hriste.css?v=1">
+<link rel="stylesheet" href="hriste.css?v=2">
 </head>
 <body class="subpage field-page" style="--page-hero-image: url('https://skbaniklibusin.cz/wp-content/uploads/2024/04/hriste-dron.png'); --page-hero-position: center 42%;">
 
@@ -116,82 +116,66 @@
   <div class="page-hero-bg"></div>
   <div class="page-hero-wash"></div>
   <div class="page-hero-inner" data-reveal>
-    <span class="page-kicker">Demo rozvrh</span>
+    <span class="page-kicker">Rezervace</span>
     <h1>Obsazenost hřiště</h1>
-    <p class="page-hero-sub">Přehled hřiště a klubovny zatím s ukázkovými daty. Později sem napojíme skutečný klubový kalendář.</p>
+    <p class="page-hero-sub">Přehled hřiště a hospody ve třech pohledech: týden, měsíc a detail dne. Zatím běží na ukázkových datech, připravených pro pozdější napojení na klubový kalendář.</p>
   </div>
 </header>
 
 <main class="field-body">
-  <section class="field-status-grid" data-reveal aria-label="Rychlý stav obsazenosti">
-    <article class="field-status-card">
-      <span class="field-status-label">Teď</span>
-      <div>
-        <strong class="field-status-value" id="fieldNowValue">-</strong>
-        <p class="field-status-note" id="fieldNowNote">Načítám demo...</p>
-      </div>
-    </article>
-    <article class="field-status-card">
-      <span class="field-status-label">Volná kapacita</span>
-      <div>
-        <strong class="field-status-value" id="fieldFreeValue">-</strong>
-        <p class="field-status-note" id="fieldFreeNote">Ve vybraný den.</p>
-      </div>
-    </article>
-    <article class="field-status-card">
-      <span class="field-status-label">Prostor</span>
-      <div>
-        <strong class="field-status-value" id="fieldFacilityValue">Hřiště</strong>
-        <p class="field-status-note">Celé hřiště, poloviny i klubovna.</p>
-      </div>
-    </article>
-    <article class="field-status-card">
-      <span class="field-status-label">Datum</span>
-      <div>
-        <strong class="field-status-value" id="fieldSelectedValue">-</strong>
-        <p class="field-status-note" id="fieldSelectedNote">Vybraný den.</p>
-      </div>
-    </article>
-  </section>
-
-  <section class="field-panel" data-reveal>
+  <section class="field-panel field-scheduler" data-reveal>
     <div class="field-panel-head">
       <div>
-        <h2 class="field-panel-title">Týdenní <span class="accent">přehled</span></h2>
-        <p class="field-panel-copy">Klepni na den a hned uvidíš, kdy je hřiště obsazené. Na mobilu se detail automaticky změní na přehledné karty.</p>
+        <h2 class="field-panel-title">Kalendář <span class="accent">obsazenosti</span></h2>
+        <p class="field-panel-copy">Týden ukazuje hodiny proti dnům, měsíc zvýrazní obsazené dny a den zobrazí celý pruh rezervace včetně rozdělení na poloviny hřiště.</p>
       </div>
-      <span class="field-source-pill">Demo data</span>
+      <span class="field-source-pill" id="fieldRangeLabel">Demo data</span>
     </div>
 
     <div class="field-toolbar">
-      <div class="field-segmented" aria-label="Přepnout prostor">
-        <button type="button" data-field-facility="field">Hřiště</button>
-        <button type="button" data-field-facility="clubhouse">Klubovna</button>
+      <div class="field-toolbar-group">
+        <div class="field-segmented" aria-label="Přepnout prostor">
+          <button type="button" data-field-facility="field">Hřiště</button>
+          <button type="button" data-field-facility="clubhouse">Hospoda</button>
+        </div>
+        <div class="field-segmented field-view-switch" aria-label="Přepnout pohled">
+          <button type="button" data-field-view="week">Týden</button>
+          <button type="button" data-field-view="month">Měsíc</button>
+          <button type="button" data-field-view="day">Den</button>
+        </div>
       </div>
-      <button type="button" class="field-jump" id="fieldToday">Dnes</button>
+      <div class="field-nav">
+        <button type="button" class="field-icon-btn" id="fieldPrev" aria-label="Předchozí období" title="Předchozí období">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <button type="button" class="field-jump" id="fieldToday">Dnes</button>
+        <button type="button" class="field-icon-btn" id="fieldNext" aria-label="Další období" title="Další období">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+        </button>
+      </div>
     </div>
 
-    <div class="field-days" id="fieldDays" aria-label="Dny v týdnu"></div>
-
-    <div class="field-detail">
-      <div class="field-detail-head">
-        <h2 class="field-detail-title" id="fieldDetailTitle">Vybraný den</h2>
-        <span class="field-detail-summary" id="fieldDetailSummary">Načítám...</span>
+    <div class="field-calendar-shell">
+      <div class="field-calendar-main">
+        <div class="field-calendar" id="fieldCalendar" aria-live="polite"></div>
       </div>
 
-      <div class="field-timeline" aria-label="Časová osa obsazenosti">
-        <div class="field-hours" id="fieldHours"></div>
-        <div class="field-lanes" id="fieldLanes"></div>
-      </div>
+      <aside class="field-inspector" aria-label="Detail vybraného času">
+        <div class="field-detail-head">
+          <div>
+            <h2 class="field-detail-title" id="fieldDetailTitle">Vybraný čas</h2>
+            <span class="field-detail-summary" id="fieldDetailSummary">Klikni na políčko v kalendáři.</span>
+          </div>
+        </div>
+        <div class="field-detail-list" id="fieldSelectedDetail"></div>
+      </aside>
+    </div>
 
-      <div class="field-mobile-list" id="fieldMobileList" aria-label="Mobilní seznam obsazenosti"></div>
-
-      <div class="field-legend" aria-label="Legenda">
-        <span><i style="background:rgba(220,38,38,.72)"></i>Klubový trénink / zápas</span>
-        <span><i style="background:rgba(5,150,105,.72)"></i>Pronájem</span>
-        <span><i style="background:rgba(29,29,31,.72)"></i>Klubovna</span>
-        <span><i style="background:#facc15"></i>Po setmění světla</span>
-      </div>
+    <div class="field-legend" aria-label="Legenda">
+      <span><i style="background:rgba(220,38,38,.72)"></i>Klubový trénink / zápas</span>
+      <span><i style="background:rgba(5,150,105,.72)"></i>Pronájem</span>
+      <span><i style="background:rgba(29,29,31,.72)"></i>Hospoda</span>
+      <span><i style="background:#facc15"></i>Po setmění světla</span>
     </div>
   </section>
 
@@ -200,8 +184,8 @@
       <h2 class="field-request-title">Jak to bude <span class="accent">fungovat</span></h2>
       <p>Tahle verze je zatím jen ukázka. Až budeme mít hotové napojení, obsazenost se bude brát ze skutečného zdroje a žádosti o rezervaci půjdou správci.</p>
       <div class="field-note-list">
-        <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Počítáme s celým hřištěm, polovinou A, polovinou B a klubovnou.</span>
-        <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Na mobilu je hlavní výpis jako seznam, ne drobná tabulka.</span>
+        <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Počítáme s celým hřištěm, polovinou A, polovinou B a hospodou.</span>
+        <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Na mobilu zůstane týdenní i denní přehled pevně v šířce obrazovky.</span>
         <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Demo formulář teď nic neposílá ven, jen ukáže budoucí tok žádosti.</span>
       </div>
     </div>
@@ -211,7 +195,7 @@
       <form class="field-form" id="fieldDemoForm">
         <label class="full"><span>Jméno / tým</span><input id="requestName" type="text" placeholder="Jan Novák"></label>
         <label><span>Datum</span><input id="requestDate" type="date"></label>
-        <label><span>Prostor</span><select id="requestPlace"><option>Celé hřiště</option><option>Polovina A</option><option>Polovina B</option><option>Klubovna</option></select></label>
+        <label><span>Prostor</span><select id="requestPlace"><option>Celé hřiště</option><option>Polovina A</option><option>Polovina B</option><option>Hospoda</option></select></label>
         <label><span>Od</span><select id="requestFrom"><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option></select></label>
         <label><span>Do</span><select id="requestTo"><option>17:30</option><option>18:30</option><option>19:30</option><option>20:30</option><option>21:00</option></select></label>
         <button class="field-submit" type="submit">Vyzkoušet demo žádost</button>
@@ -257,6 +241,6 @@
 </footer>
 
 <script src="page.js"></script>
-<script src="hriste.js?v=1"></script>
+<script src="hriste.js?v=2"></script>
 </body>
 </html>
