@@ -177,11 +177,22 @@
 <section id="aktuality" class="section section-news">
   <div class="section-head" data-reveal>
     <h2 class="section-title">Aktuality z <span class="accent">klubu</span></h2>
-    <a href="https://skbaniklibusin.cz/" target="_blank" rel="noopener" class="section-link">Všechny články →</a>
+    <span class="section-note" id="articleCount">Články se načítají…</span>
   </div>
   <div class="news-grid" id="newsGrid"></div>
   <p class="data-note" id="dataNote" hidden></p>
 </section>
+
+<!-- ============ DETAIL ČLÁNKU ============ -->
+<div class="article-modal" id="articleModal" aria-hidden="true">
+  <div class="article-modal-backdrop" data-article-close></div>
+  <article class="article-panel" role="dialog" aria-modal="true" aria-labelledby="articleTitle">
+    <button type="button" class="article-close" id="articleClose" aria-label="Zavřít článek">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+    <div class="article-detail" id="articleDetail"></div>
+  </article>
+</div>
 
 <!-- ============ FOOTER ============ -->
 <footer id="kontakt" class="footer">
