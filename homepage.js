@@ -499,8 +499,9 @@
       var thumb = p.image
         ? '<div class="news-thumb"><img src="' + esc(p.image) + '" loading="lazy" alt=""></div>'
         : "";
-      return '<button type="button" class="news-card ' + (p.image ? "has-image" : "no-image") +
-        '" data-article-id="' + esc(p.id) + '" data-reveal aria-label="Otevřít článek ' + esc(p.title) + '">' +
+      return '<a href="clanek.html?id=' + encodeURIComponent(p.id) + '" class="news-card ' +
+        (p.image ? "has-image" : "no-image") + '" data-article-id="' + esc(p.id) +
+        '" data-reveal aria-label="Otevřít článek ' + esc(p.title) + '">' +
         thumb +
         '<div class="news-body">' +
         '<span class="news-date">' + esc(fmtArticleDate(p.date)) + "</span>" +
@@ -508,15 +509,9 @@
         newsCardSummary(p) +
         '<span class="news-excerpt">' + esc(p.excerpt) + "</span>" +
         '<span class="news-read">Číst článek</span>' +
-        "</div></button>";
+        "</div></a>";
     }).join("");
-    Array.prototype.forEach.call(grid.querySelectorAll("[data-article-id]"), function (btn) {
-      btn.addEventListener("click", function () {
-        openArticle(btn.getAttribute("data-article-id"));
-      });
-    });
     observeReveals();
-    openArticleFromHash();
   }
 
   function newsCardSummary(p) {
@@ -537,121 +532,6 @@
     if (!score) return "";
     return (score.home ? score.home + " " : "") + score.homeGoals + " : " + score.awayGoals +
       (score.away ? " " + score.away : "");
-  }
-
-  function openArticle(id, fromHash) {
-    var article = findArticle(id);
-    var modal = $("articleModal");
-    var detail = $("articleDetail");
-    if (!article || !modal || !detail) return;
-
-    detail.innerHTML = articleDetailHtml(article);
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("article-locked");
-    if (!fromHash && window.history) {
-      window.history.replaceState(null, "", "#clanek-" + encodeURIComponent(article.id));
-    }
-    var close = $("articleClose");
-    if (close) close.focus();
-  }
-
-  function closeArticle(keepHash) {
-    var modal = $("articleModal");
-    if (!modal || !modal.classList.contains("open")) return;
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("article-locked");
-    if (!keepHash && window.history && /^#clanek-/.test(window.location.hash)) {
-      window.history.replaceState(null, "", window.location.pathname + window.location.search);
-    }
-  }
-
-  function findArticle(id) {
-    id = String(id || "");
-    for (var i = 0; i < state.articles.length; i++) {
-      if (state.articles[i].id === id) return state.articles[i];
-    }
-    return null;
-  }
-
-  function openArticleFromHash() {
-    var hash = window.location.hash || "";
-    if (!/^#clanek-/.test(hash)) return;
-    openArticle(decodeURIComponent(hash.replace(/^#clanek-/, "")), true);
-  }
-
-  function articleDetailHtml(article) {
-    var summary = article.summary || {};
-    var image = article.image
-      ? '<div class="article-image"><img src="' + esc(article.image) + '" alt="" loading="lazy"></div>'
-      : "";
-    return '<header class="article-head">' +
-      '<span class="article-date">' + esc(fmtArticleDate(article.date)) + "</span>" +
-      '<h2 class="article-title" id="articleTitle">' + esc(article.title) + "</h2>" +
-      "</header>" +
-      articleMatchOverview(summary) +
-      image +
-      '<div class="article-text">' + articleBodyHtml(article) + "</div>" +
-      '<a class="article-source" href="' + esc(article.link) + '" target="_blank" rel="noopener">Původní článek</a>';
-  }
-
-  function articleMatchOverview(summary) {
-    if (!summary || !summary.hasMatchInfo) return "";
-    var html = '<section class="article-match-overview" aria-label="Přehled zápasu">';
-    if (summary.score) {
-      html += '<div class="article-scoreboard">' +
-        '<span class="article-team">' + esc(summary.score.home) + "</span>" +
-        '<strong>' + esc(summary.score.homeGoals) + " : " + esc(summary.score.awayGoals) + "</strong>" +
-        '<span class="article-team">' + esc(summary.score.away) + "</span>" +
-        "</div>";
-      if (summary.score.halftime) {
-        html += '<span class="article-half">Poločas ' + esc(summary.score.halftime) + "</span>";
-      }
-    }
-    html += '<div class="article-facts">';
-    if (summary.goals) {
-      html += '<div class="article-fact"><span>Střelci</span><strong>' + esc(summary.goals) + "</strong></div>";
-    }
-    if (summary.lineup) {
-      html += '<div class="article-fact lineup"><span>Sestava</span><strong>' + esc(summary.lineup) + "</strong></div>";
-    }
-    html += "</div></section>";
-    return html;
-  }
-
-  function articleBodyHtml(article) {
-    var text = stripSummaryLines(article.contentText || article.excerpt || "", article.summary || {});
-    var parts = text.split(/\n{2,}/).map(cleanLine).filter(Boolean);
-    if (!parts.length && article.excerpt) parts = [article.excerpt];
-    return parts.map(function (part) { return "<p>" + esc(part) + "</p>"; }).join("");
-  }
-
-  function stripSummaryLines(text, summary) {
-    var skip = {};
-    if (summary.goalsLine) skip[cleanLine(summary.goalsLine)] = true;
-    if (summary.lineupLine) skip[cleanLine(summary.lineupLine)] = true;
-    return plainText(text).split("\n").filter(function (line) {
-      var cleaned = cleanLine(line);
-      return !cleaned || !skip[cleaned];
-    }).join("\n").trim();
-  }
-
-  function setupArticleModal() {
-    var modal = $("articleModal");
-    if (!modal) return;
-    var close = $("articleClose");
-    if (close) close.addEventListener("click", function () { closeArticle(false); });
-    Array.prototype.forEach.call(modal.querySelectorAll("[data-article-close]"), function (el) {
-      el.addEventListener("click", function () { closeArticle(false); });
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && modal.classList.contains("open")) closeArticle(false);
-    });
-    window.addEventListener("hashchange", function () {
-      if (/^#clanek-/.test(window.location.hash || "")) openArticleFromHash();
-      else closeArticle(true);
-    });
   }
 
   /* ---------------- flip card interactions ---------------- */
@@ -805,7 +685,6 @@
   function init() {
     renderTabs();
     setupNav();
-    setupArticleModal();
     setupFlip();
     setupScrollFx();
     observeReveals();
